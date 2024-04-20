@@ -1,19 +1,10 @@
-import { MdOutlineFileOpen, MdOutlineSettings } from "react-icons/md";
-import { ReactElement, useState } from "react";
+import ProjectExplorerView from "./ProjectExplorerView";
+import { createElement, useState } from "react";
 
-type View = { label: string, icon: ReactElement };
-type Views = { "project-explorer": View, "settings": View };
-type ViewId = keyof Views;
+type ViewId = "project-explorer";
 
-const views: Views = {
-  "project-explorer": {
-    label: "Project Explorer",
-    icon: <MdOutlineFileOpen />,
-  },
-  "settings": {
-    label: "Settings",
-    icon: <MdOutlineSettings />,
-  },
+const views = {
+  "project-explorer": ProjectExplorerView,
 };
 
 function PrimarySideBar() {
@@ -31,12 +22,11 @@ function PrimarySideBar() {
     <div className="flex">
       {activeViewId && (
         <div
-          className="px-4 py-2 border-r border-neutral-300 dark:border-neutral-800
-            min-w-64 select-none"
+          className="py-2 border-r border-neutral-300 dark:border-neutral-800
+            w-72 lg:w-80 select-none"
         >
-          <h2 className="text-sm text-neutral-500 dark:text-neutral-400 font-medium">
-            {views[activeViewId as ViewId].label}
-          </h2>
+          {/* without using JSX because the view is dynamically selected */}
+          {createElement(views[activeViewId])}
         </div>
       )}
 
@@ -52,7 +42,7 @@ function PrimarySideBar() {
                 text-neutral-100 dark:text-neutral-300 bg-neutral-400
                 dark:bg-neutral-600 select-none"
             >
-              {viewProperties.label}
+              {viewProperties.title}
             </span>
             <button
               key={viewId}
