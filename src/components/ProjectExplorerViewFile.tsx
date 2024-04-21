@@ -1,6 +1,12 @@
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { createElement } from "react";
 import { inferFileIcon } from "../libs/files";
+import {
+  openContextMenu,
+  setContextMenuContent,
+  setContextMenuPosition,
+} from "../slices/context_menu";
+import { useAppDispatch } from "../hooks/store";
 
 interface Props {
   name: string
@@ -10,10 +16,44 @@ interface Props {
 function ProjectExplorerViewFile({ name, nestingLevel }: Props) {
   const icon = inferFileIcon(name);
 
+  const dispatch = useAppDispatch();
+
+  function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+
+    dispatch(setContextMenuPosition([e.pageX, e.pageY]));
+    dispatch(setContextMenuContent([
+      {
+        content: [
+          {
+            label: `Cut`,
+          },
+          {
+            label: `Copy`,
+          },
+          {
+            label: `Rename "${name}" to ...`,
+          },
+        ]
+      },
+      {
+        content: [
+          {
+            label: `Delete "${name}"`,
+            isDanger: true,
+          }
+        ],
+      },
+    ]));
+
+    dispatch(openContextMenu());
+  }
+
   return (
     <button
       className="w-full py-0.5 dark:text-neutral-300 hover:bg-neutral-300
         dark:hover:bg-neutral-800"
+      onContextMenu={handleContextMenu}
     >
       <div
         className="w-full flex items-center gap-1"

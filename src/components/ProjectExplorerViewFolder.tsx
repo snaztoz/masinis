@@ -5,7 +5,13 @@ import {
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 import { TbFolder, TbFolderOpen } from "react-icons/tb";
+import {
+  openContextMenu,
+  setContextMenuContent,
+  setContextMenuPosition,
+} from "../slices/context_menu";
 import { useState } from "react";
+import { useAppDispatch } from "../hooks/store";
 
 interface Props {
   name: string
@@ -15,6 +21,49 @@ interface Props {
 
 function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+
+    dispatch(setContextMenuPosition([e.pageX, e.pageY]));
+    dispatch(setContextMenuContent([
+      {
+        content: [
+          {
+            label: "New file"
+          },
+          {
+            label: "New folder"
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            label: `Cut`,
+          },
+          {
+            label: `Copy`,
+          },
+          {
+            label: `Rename "${name}" to ...`,
+          },
+        ]
+      },
+      {
+        content: [
+          {
+            label: `Delete "${name}"`,
+            isDanger: true,
+          },
+        ],
+      },
+    ]));
+
+    dispatch(openContextMenu());
+  }
 
   function toggle() {
     setIsExpanded(!isExpanded);
@@ -41,6 +90,7 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
         className="w-full py-0.5 dark:text-neutral-300 hover:bg-neutral-300
           dark:hover:bg-neutral-800"
         onClick={toggle}
+        onContextMenu={handleContextMenu}
       >
         <div
           className="flex gap-1"
@@ -61,7 +111,6 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
               ? <TbFolderOpen className="text-pink-400" />
               : <TbFolder className="text-pink-400" />
             }
-
           </div>
           <p>{name}</p>
         </div>
