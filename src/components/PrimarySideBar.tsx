@@ -39,9 +39,10 @@ function PrimarySideBar() {
           >
             <span
               className="hidden group-hover:block px-2 py-0.5 w-fit absolute
-                top-1/4 right-[110%] rounded text-nowrap text-xs font-medium
-                text-neutral-100 dark:text-neutral-300 bg-neutral-400
-                dark:bg-neutral-600 select-none"
+                top-1/4 right-[110%] rounded text-nowrap text-xs
+                text-neutral-800 dark:text-neutral-300 bg-neutral-300
+                dark:bg-neutral-800 border border-neutral-400
+                dark:border-neutral-700 select-none"
             >
               {viewProperties.title}
             </span>
