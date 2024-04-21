@@ -1,3 +1,4 @@
+import { cn } from "../libs/classnames";
 import ProjectExplorerView from "./ProjectExplorerView";
 import { createElement, useState } from "react";
 
@@ -46,9 +47,10 @@ function PrimarySideBar() {
             </span>
             <button
               key={viewId}
-              className={`p-2 rounded-full text-2xl hover:text-neutral-500
-                dark:hover:text-neutral-300
-                ${viewId === activeViewId ? 'text-neutral-500 dark:text-neutral-300' : ''}`}
+              className={cn("p-2", "rounded-full", "text-2xl",
+                "hover:text-neutral-500", "dark:hover:text-neutral-300",
+                { "text-neutral-500 dark:text-neutral-300": viewId === activeViewId }
+              )}
               onClick={() => toggleView(viewId as ViewId)}
             >
               {viewProperties.icon}
