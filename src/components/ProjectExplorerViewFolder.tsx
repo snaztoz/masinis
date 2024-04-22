@@ -42,10 +42,10 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
       {
         content: [
           {
-            label: `Cut`,
+            label: "Cut",
           },
           {
-            label: `Copy`,
+            label: "Copy",
           },
           {
             label: `Rename "${name}" to ...`,

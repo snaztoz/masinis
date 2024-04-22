@@ -26,14 +26,14 @@ function ProjectExplorerViewHeader({ title }: Props) {
       {
         content: [
           {
-            label: `Open directory`,
+            label: "Open directory",
           },
         ]
       },
       {
         content: [
           {
-            label: `Close directory`,
+            label: "Close directory",
             isDanger: true,
           }
         ],

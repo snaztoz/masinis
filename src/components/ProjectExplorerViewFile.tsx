@@ -26,10 +26,10 @@ function ProjectExplorerViewFile({ name, nestingLevel }: Props) {
       {
         content: [
           {
-            label: `Cut`,
+            label: "Cut",
           },
           {
-            label: `Copy`,
+            label: "Copy",
           },
           {
             label: `Rename "${name}" to ...`,
