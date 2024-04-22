@@ -1,5 +1,5 @@
-import { cn } from "../libs/classnames";
 import ProjectExplorerView from "./ProjectExplorerView";
+import { cn } from "../libs/classnames";
 import { createElement, useState } from "react";
 
 type ViewId = "project-explorer";
