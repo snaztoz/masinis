@@ -6,10 +6,10 @@ import {
 } from "react-icons/md";
 import { TbFolder, TbFolderOpen } from "react-icons/tb";
 import {
-  openContextMenu,
-  setContextMenuContent,
-  setContextMenuPosition,
-} from "../slices/context_menu";
+  openOverlayMenu,
+  setOverlayMenuContent,
+  setOverlayMenuPosition,
+} from "../slices/overlay_menu";
 import { useState } from "react";
 import { useAppDispatch } from "../hooks/store";
 
@@ -24,11 +24,11 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
 
   const dispatch = useAppDispatch();
 
-  function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleOverlayMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
 
-    dispatch(setContextMenuPosition([e.pageX, e.pageY]));
-    dispatch(setContextMenuContent([
+    dispatch(setOverlayMenuPosition([e.pageX, e.pageY]));
+    dispatch(setOverlayMenuContent([
       {
         content: [
           {
@@ -62,7 +62,7 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
       },
     ]));
 
-    dispatch(openContextMenu());
+    dispatch(openOverlayMenu());
   }
 
   function toggle() {
@@ -90,7 +90,7 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
         className="w-full py-0.5 dark:text-neutral-300 hover:bg-neutral-300
           dark:hover:bg-neutral-800"
         onClick={toggle}
-        onContextMenu={handleContextMenu}
+        onContextMenu={handleOverlayMenu}
       >
         <div
           className="flex gap-1"

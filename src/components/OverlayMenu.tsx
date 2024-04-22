@@ -1,31 +1,31 @@
-import ContextMenuBox from "./ContextMenuBox";
-import { closeContextMenu } from "../slices/context_menu";
+import OverlayMenuBox from "./OverlayMenuBox";
+import { closeOverlayMenu } from "../slices/overlay_menu";
 import { useAppDispatch, useAppSelector } from "../hooks/store";
 
-function ContextMenu() {
-  const isContextMenuOpened = useAppSelector(s => s.contextMenu.isOpened);
+function OverlayMenu() {
+  const isOverlayMenuOpened = useAppSelector(s => s.overlayMenu.isOpened);
 
   const dispatch = useAppDispatch();
 
   return (
     <>
-      {isContextMenuOpened && (
+      {isOverlayMenuOpened && (
         <div
           className="absolute left-0 top-0 right-0 bottom-0 z-10 w-full h-full
             select-none overflow-clip"
-          onClick={() => dispatch(closeContextMenu())}
+          onClick={() => dispatch(closeOverlayMenu())}
           onContextMenu={(e) => {
             e.preventDefault();
             e.stopPropagation();
 
-            dispatch(closeContextMenu());
+            dispatch(closeOverlayMenu());
           }}
         >
-          <ContextMenuBox />
+          <OverlayMenuBox />
         </div>
       )}
     </>
   );
 }
 
-export default ContextMenu;
+export default OverlayMenu;

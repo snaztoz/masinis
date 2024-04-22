@@ -4,7 +4,7 @@ interface Props {
   children: ReactNode
 }
 
-function ContextMenuItemGroup({ children }: Props) {
+function OverlayMenuItemGroup({ children }: Props) {
   return (
     <div
       className="px-1 py-1 flex flex-col border-b last:border-0 dark:border-neutral-700">
@@ -13,4 +13,4 @@ function ContextMenuItemGroup({ children }: Props) {
   );
 }
 
-export default ContextMenuItemGroup;
+export default OverlayMenuItemGroup;

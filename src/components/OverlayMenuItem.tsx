@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode
 }
 
-function ContextMenuItem({ isDanger, children }: Props) {
+function OverlayMenuItem({ isDanger, children }: Props) {
   return (
     <button
       className={cn("px-3", "py-1", "text-left", "rounded",
@@ -19,4 +19,4 @@ function ContextMenuItem({ isDanger, children }: Props) {
   );
 }
 
-export default ContextMenuItem;
+export default OverlayMenuItem;

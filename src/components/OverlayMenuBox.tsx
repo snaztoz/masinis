@@ -1,5 +1,5 @@
-import ContextMenuItem from "./ContextMenuItem";
-import ContextMenuItemGroup from "./ContextMenuItemGroup";
+import OverlayMenuItem from "./OverlayMenuItem";
+import OverlayMenuItemGroup from "./OverlayMenuItemGroup";
 import { useAppSelector } from "../hooks/store";
 
 interface BoxPosition {
@@ -9,21 +9,21 @@ interface BoxPosition {
   left?: string
 }
 
-function ContextMenuBox() {
-  const [xPos, yPos] = useAppSelector(s => s.contextMenu.position);
-  const groups = useAppSelector(s => s.contextMenu.groups);
+function OverlayMenuBox() {
+  const [xPos, yPos] = useAppSelector(s => s.overlayMenu.position);
+  const groups = useAppSelector(s => s.overlayMenu.groups);
 
   const itemsEl = groups.map((group, i) => (
-    <ContextMenuItemGroup key={i}>
+    <OverlayMenuItemGroup key={i}>
       {group.content.map((item, i) => (
-        <ContextMenuItem
+        <OverlayMenuItem
           key={i}
           isDanger={item.isDanger}
         >
           {item.label}
-        </ContextMenuItem>
+        </OverlayMenuItem>
       ))}
-    </ContextMenuItemGroup>
+    </OverlayMenuItemGroup>
   ));
 
   function getPositionStyles(): BoxPosition {
@@ -62,4 +62,4 @@ function ContextMenuBox() {
   );
 }
 
-export default ContextMenuBox;
+export default OverlayMenuBox;

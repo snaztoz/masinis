@@ -1,9 +1,9 @@
-import contextMenuReducer from "./slices/context_menu";
+import overlayMenuReducer from "./slices/overlay_menu";
 import { configureStore } from "@reduxjs/toolkit"
 
 export const store = configureStore({
   reducer: {
-    contextMenu: contextMenuReducer,
+    overlayMenu: overlayMenuReducer,
   },
 });
 

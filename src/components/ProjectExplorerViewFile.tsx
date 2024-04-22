@@ -2,10 +2,10 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { createElement } from "react";
 import { inferFileIcon } from "../libs/files";
 import {
-  openContextMenu,
-  setContextMenuContent,
-  setContextMenuPosition,
-} from "../slices/context_menu";
+  openOverlayMenu,
+  setOverlayMenuContent,
+  setOverlayMenuPosition,
+} from "../slices/overlay_menu";
 import { useAppDispatch } from "../hooks/store";
 
 interface Props {
@@ -18,11 +18,11 @@ function ProjectExplorerViewFile({ name, nestingLevel }: Props) {
 
   const dispatch = useAppDispatch();
 
-  function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleOverlayMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
 
-    dispatch(setContextMenuPosition([e.pageX, e.pageY]));
-    dispatch(setContextMenuContent([
+    dispatch(setOverlayMenuPosition([e.pageX, e.pageY]));
+    dispatch(setOverlayMenuContent([
       {
         content: [
           {
@@ -46,14 +46,14 @@ function ProjectExplorerViewFile({ name, nestingLevel }: Props) {
       },
     ]));
 
-    dispatch(openContextMenu());
+    dispatch(openOverlayMenu());
   }
 
   return (
     <button
       className="w-full py-0.5 dark:text-neutral-300 hover:bg-neutral-300
         dark:hover:bg-neutral-800"
-      onContextMenu={handleContextMenu}
+      onContextMenu={handleOverlayMenu}
     >
       <div
         className="w-full flex items-center gap-1"

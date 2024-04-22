@@ -1,4 +1,4 @@
-import ContextMenu from "./components/ContextMenu";
+import OverlayMenu from "./components/OverlayMenu";
 import PrimarySideBar from "./components/PrimarySideBar";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <PrimarySideBar />
       </main>
 
-      <ContextMenu />
+      <OverlayMenu />
     </div>
   );
 }
