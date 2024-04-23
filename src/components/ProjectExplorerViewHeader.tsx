@@ -26,6 +26,16 @@ function ProjectExplorerViewHeader({ title }: Props) {
       {
         content: [
           {
+            label: "New empty file",
+          },
+        ],
+      },
+      {
+        content: [
+          {
+            label: "Open file",
+          },
+          {
             label: "Open directory",
           },
         ]
