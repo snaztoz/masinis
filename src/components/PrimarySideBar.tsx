@@ -2,14 +2,14 @@ import ProjectExplorerView from "./ProjectExplorerView";
 import { cn } from "../libs/classnames";
 import { createElement, useState } from "react";
 
-type ViewId = "project-explorer";
-
 const views = {
   "project-explorer": ProjectExplorerView,
 };
 
+type ViewId = keyof typeof views;
+
 function PrimarySideBar() {
-  const [activeViewId, setActiveViewId] = useState<ViewId | null>(null);
+  const [activeViewId, setActiveViewId] = useState<ViewId | null>("project-explorer");
 
   function toggleView(viewName: ViewId) {
     if (viewName === activeViewId) {
