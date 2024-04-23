@@ -1,8 +1,10 @@
+import fsReducer from "./slices/fs";
 import overlayMenuReducer from "./slices/overlay_menu";
 import { configureStore } from "@reduxjs/toolkit"
 
 export const store = configureStore({
   reducer: {
+    fs: fsReducer,
     overlayMenu: overlayMenuReducer,
   },
 });

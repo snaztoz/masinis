@@ -1,17 +1,19 @@
+import { useAppSelector } from "../hooks/store";
 import ProjectExplorerViewFolder from "./ProjectExplorerViewFolder";
 import ProjectExplorerViewHeader from "./ProjectExplorerViewHeader";
-import { TEMP_FILE_TREE } from "./temp_file_tree";
 import { MdOutlineFileOpen } from "react-icons/md";
 
 const title = "Project Explorer";
 
 function ProjectExplorerView() {
+  const fileTree = useAppSelector(s => s.fs.fileTree);
+
   return (
     <>
       <ProjectExplorerViewHeader title={title} />
 
       <section className="mt-2 text-sm text-neutral-800">
-        {TEMP_FILE_TREE.map(f => {
+        {fileTree?.map(f => {
           if (f.children) {
             return (
               <ProjectExplorerViewFolder
