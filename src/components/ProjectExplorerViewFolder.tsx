@@ -1,4 +1,4 @@
-import FileNode from "../contracts/file_node";
+import FileEntry from "../contracts/fs";
 import ProjectExplorerViewFile from "./ProjectExplorerViewFile";
 import {
   MdOutlineKeyboardArrowDown,
@@ -15,7 +15,7 @@ import { useAppDispatch } from "../hooks/store";
 
 interface Props {
   name: string
-  content: FileNode[]
+  content: FileEntry[]
   nestingLevel: number
 }
 
@@ -69,11 +69,11 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
     setIsExpanded(!isExpanded);
   }
 
-  const contentElements = content.map(f => f.isDirectory ? (
+  const contentElements = content.map(f => f.children ? (
     <ProjectExplorerViewFolder
       key={f.name}
       name={f.name}
-      content={f.dirContent!}
+      content={f.children!}
       nestingLevel={nestingLevel + 1}
     />
   ) : (

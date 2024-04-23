@@ -12,12 +12,12 @@ function ProjectExplorerView() {
 
       <section className="mt-2 text-sm text-neutral-800">
         {TEMP_FILE_TREE.map(f => {
-          if (f.isDirectory) {
+          if (f.children) {
             return (
               <ProjectExplorerViewFolder
                 key={f.name}
                 name={f.name}
-                content={f.dirContent!}
+                content={f.children!}
                 nestingLevel={0}
               />
             );

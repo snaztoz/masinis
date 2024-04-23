@@ -1,14 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { OverlayMenuItemGroup } from "../contracts/overlay_menu";
 import type { PayloadAction } from "@reduxjs/toolkit";
-
-interface OverlayMenuItem {
-  label: string
-  isDanger?: boolean
-}
-
-interface OverlayMenuItemGroup {
-  content: OverlayMenuItem[]
-}
 
 export interface OverlayMenuState {
   isOpened: boolean
