@@ -1,6 +1,4 @@
-import OverlayMenuItem from "./OverlayMenuItem";
-import OverlayMenuItemGroup from "./OverlayMenuItemGroup";
-import { useAppSelector } from "../hooks/store";
+import { ReactNode } from "react";
 
 interface BoxPosition {
   top?: string
@@ -9,22 +7,13 @@ interface BoxPosition {
   left?: string
 }
 
-function OverlayMenuBox() {
-  const [xPos, yPos] = useAppSelector(s => s.overlayMenu.position);
-  const groups = useAppSelector(s => s.overlayMenu.groups);
+interface Props {
+  position: [number, number]
+  children: ReactNode
+}
 
-  const itemsEl = groups.map((group, i) => (
-    <OverlayMenuItemGroup key={i}>
-      {group.content.map((item, i) => (
-        <OverlayMenuItem
-          key={i}
-          isDanger={item.isDanger}
-        >
-          {item.label}
-        </OverlayMenuItem>
-      ))}
-    </OverlayMenuItemGroup>
-  ));
+function OverlayMenuBox({ position, children }: Props) {
+  const [xPos, yPos] = position;
 
   function getPositionStyles(): BoxPosition {
     const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
@@ -56,7 +45,7 @@ function OverlayMenuBox() {
       }}
     >
       <div className="flex flex-col">
-        {itemsEl}
+        {children}
       </div>
     </nav>
   );
