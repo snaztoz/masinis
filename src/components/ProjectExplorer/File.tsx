@@ -1,6 +1,7 @@
 import FileContextMenu from "./FileContextMenu";
+import useMenu from "../../hooks/useMenu";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { createElement, useState } from "react";
+import { createElement } from "react";
 import { inferFileIcon } from "../../libs/files";
 
 interface Props {
@@ -11,15 +12,20 @@ interface Props {
 function File({ name, nestingLevel }: Props) {
   const icon = inferFileIcon(name);
 
-  const [showContextMenu, setShowContextMenu] = useState(false);
-  const [contextMenuPosition, setContextMenuPosition] = useState<[number, number]>([0, 0]);
+  const {
+    isMenuShown,
+    menuPosition,
+    setMenuPosition,
+    openMenu,
+    closeMenu,
+  } = useMenu();
 
   function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     e.stopPropagation();
 
-    setContextMenuPosition([e.pageX, e.pageY]);
-    setShowContextMenu(true);
+    setMenuPosition([e.pageX, e.pageY]);
+    openMenu();
   }
 
   return (
@@ -47,9 +53,9 @@ function File({ name, nestingLevel }: Props) {
 
       <FileContextMenu
         fileName={name}
-        position={contextMenuPosition}
-        isShown={showContextMenu}
-        handleClose={() => setShowContextMenu(false)}
+        position={menuPosition}
+        isShown={isMenuShown}
+        handleClose={closeMenu}
       />
     </>
   );

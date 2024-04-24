@@ -1,6 +1,7 @@
 import HeaderMenu from "./HeaderMenu";
+import useMenu from "../../hooks/useMenu";
 import { MdMoreVert } from "react-icons/md";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 interface Props {
   title: string
@@ -8,8 +9,13 @@ interface Props {
 
 function Header({ title }: Props) {
   const menuTogglerRef = useRef<HTMLDivElement>(null);
-  const [showMenu, setShowMenu] = useState(false);
-  const [menuPosition, setMenuPosition] = useState<[number, number]>([0, 0]);
+  const {
+    isMenuShown,
+    menuPosition,
+    setMenuPosition,
+    openMenu,
+    closeMenu,
+  } = useMenu();
 
   function handleMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -20,7 +26,7 @@ function Header({ title }: Props) {
     const y = togglerPosition!.bottom;
 
     setMenuPosition([x, y]);
-    setShowMenu(true);
+    openMenu();
   }
 
   return (
@@ -48,8 +54,8 @@ function Header({ title }: Props) {
 
       <HeaderMenu
         position={menuPosition}
-        isShown={showMenu}
-        handleClose={() => setShowMenu(false)}
+        isShown={isMenuShown}
+        handleClose={closeMenu}
       />
     </>
   );
