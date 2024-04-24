@@ -1,6 +1,7 @@
 import FileContextMenu from "./FileContextMenu";
 import useMenu from "../../hooks/useMenu";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+
 import { createElement } from "react";
 import { inferFileIcon } from "../../libs/files";
 
@@ -24,7 +25,7 @@ function File({ name, nestingLevel }: Props) {
     e.preventDefault();
     e.stopPropagation();
 
-    setMenuPosition([e.pageX, e.pageY]);
+    setMenuPosition({ x: e.pageX, y: e.pageY });
     openMenu();
   }
 

@@ -25,7 +25,7 @@ function Header({ title }: Props) {
     const x = togglerPosition!.right;
     const y = togglerPosition!.bottom;
 
-    setMenuPosition([x, y]);
+    setMenuPosition({ x, y });
     openMenu();
   }
 

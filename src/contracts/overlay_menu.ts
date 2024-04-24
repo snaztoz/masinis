@@ -3,6 +3,11 @@ export interface OverlayMenuItem {
   isDanger?: boolean
 }
 
-export interface OverlayMenuItemGroup {
+export interface OverlayMenuGroup {
   content: OverlayMenuItem[]
+}
+
+export interface OverlayMenuPosition {
+  x: number
+  y: number
 }

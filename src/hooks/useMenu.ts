@@ -1,8 +1,12 @@
+import { OverlayMenuPosition } from "../contracts/overlay_menu";
 import { useState } from "react";
 
 function useMenu() {
   const [isMenuShown, setIsMenuShown] = useState(false);
-  const [menuPosition, setMenuPosition] = useState<[number, number]>([0, 0]);
+  const [menuPosition, setMenuPosition] = useState<OverlayMenuPosition>({
+    x: 0,
+    y: 0,
+  });
 
   function openMenu() {
     setIsMenuShown(true);

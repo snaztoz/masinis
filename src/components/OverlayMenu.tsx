@@ -1,8 +1,9 @@
 import OverlayMenuBox from "./OverlayMenuBox";
+import { OverlayMenuPosition } from "../contracts/overlay_menu";
 import { ReactNode } from "react";
 
 interface Props {
-  boxPosition: [number, number]
+  boxPosition: OverlayMenuPosition
   children: ReactNode
   handleClose: () => void
 }

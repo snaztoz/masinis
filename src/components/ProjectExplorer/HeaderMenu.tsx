@@ -1,11 +1,12 @@
 import OverlayMenu from "../OverlayMenu";
 import OverlayMenuGroup from "../OverlayMenuGroup";
 import OverlayMenuItem from "../OverlayMenuItem";
+import { OverlayMenuPosition } from "../../contracts/overlay_menu";
 import { createPortal } from "react-dom";
 
 interface Props {
   isShown: boolean
-  position: [number, number]
+  position: OverlayMenuPosition
   handleClose: () => void
 }
 

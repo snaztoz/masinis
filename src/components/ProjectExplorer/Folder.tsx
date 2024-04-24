@@ -29,7 +29,7 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
     e.preventDefault();
     e.stopPropagation();
 
-    setMenuPosition([e.pageX, e.pageY]);
+    setMenuPosition({ x: e.pageX, y: e.pageY });
     openMenu();
   }
 

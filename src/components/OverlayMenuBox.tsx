@@ -1,3 +1,4 @@
+import { OverlayMenuPosition } from "../contracts/overlay_menu";
 import { ReactNode } from "react";
 
 interface BoxPosition {
@@ -8,25 +9,25 @@ interface BoxPosition {
 }
 
 interface Props {
-  position: [number, number]
+  position: OverlayMenuPosition
   children: ReactNode
 }
 
 function OverlayMenuBox({ position, children }: Props) {
-  const [xPos, yPos] = position;
+  const { x, y } = position;
 
   function getPositionStyles(): BoxPosition {
     const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
 
-    const xPosExceedingHalfOfWindow = xPos > windowWidth / 2;
-    const yPosExceedingHalfOfWindow = yPos > windowHeight / 2;
+    const xPosExceedingHalfOfWindow = x > windowWidth / 2;
+    const yPosExceedingHalfOfWindow = y > windowHeight / 2;
 
     return {
-      top: yPosExceedingHalfOfWindow ? undefined : `${yPos}px`,
-      bottom: yPosExceedingHalfOfWindow ? `${windowHeight - yPos}px` : undefined,
+      top: yPosExceedingHalfOfWindow ? undefined : `${y}px`,
+      bottom: yPosExceedingHalfOfWindow ? `${windowHeight - y}px` : undefined,
 
-      left: xPosExceedingHalfOfWindow ? undefined : `${xPos}px`,
-      right: xPosExceedingHalfOfWindow ? `${windowWidth - xPos}px` : undefined,
+      left: xPosExceedingHalfOfWindow ? undefined : `${x}px`,
+      right: xPosExceedingHalfOfWindow ? `${windowWidth - x}px` : undefined,
     };
   }
 
