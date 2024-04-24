@@ -10,7 +10,7 @@ interface Props {
   handleClose: () => void
 }
 
-function ProjectExplorerViewFileContextMenu({
+function FileContextMenu({
   fileName,
   isShown,
   position,
@@ -37,4 +37,4 @@ function ProjectExplorerViewFileContextMenu({
   );
 }
 
-export default ProjectExplorerViewFileContextMenu;
+export default FileContextMenu;

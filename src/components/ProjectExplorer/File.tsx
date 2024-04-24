@@ -1,14 +1,14 @@
-import ProjectExplorerViewFileContextMenu from "./menu/ProjectExplorerViewFileContextMenu";
+import FileContextMenu from "./FileContextMenu";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { createElement, useState } from "react";
-import { inferFileIcon } from "../libs/files";
+import { inferFileIcon } from "../../libs/files";
 
 interface Props {
   name: string
   nestingLevel: number
 }
 
-function ProjectExplorerViewFile({ name, nestingLevel }: Props) {
+function File({ name, nestingLevel }: Props) {
   const icon = inferFileIcon(name);
 
   const [showContextMenu, setShowContextMenu] = useState(false);
@@ -45,7 +45,7 @@ function ProjectExplorerViewFile({ name, nestingLevel }: Props) {
         </div>
       </button>
 
-      <ProjectExplorerViewFileContextMenu
+      <FileContextMenu
         fileName={name}
         position={contextMenuPosition}
         isShown={showContextMenu}
@@ -55,4 +55,4 @@ function ProjectExplorerViewFile({ name, nestingLevel }: Props) {
   );
 }
 
-export default ProjectExplorerViewFile;
+export default File;

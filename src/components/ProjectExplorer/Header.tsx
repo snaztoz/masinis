@@ -1,4 +1,4 @@
-import ProjectExplorerViewHeaderMenu from "./menu/ProjectExplorerViewHeaderMenu";
+import HeaderMenu from "./HeaderMenu";
 import { MdMoreVert } from "react-icons/md";
 import { useRef, useState } from "react";
 
@@ -6,7 +6,7 @@ interface Props {
   title: string
 }
 
-function ProjectExplorerViewHeader({ title }: Props) {
+function Header({ title }: Props) {
   const menuTogglerRef = useRef<HTMLDivElement>(null);
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState<[number, number]>([0, 0]);
@@ -46,7 +46,7 @@ function ProjectExplorerViewHeader({ title }: Props) {
         </div>
       </header>
 
-      <ProjectExplorerViewHeaderMenu
+      <HeaderMenu
         position={menuPosition}
         isShown={showMenu}
         handleClose={() => setShowMenu(false)}
@@ -55,4 +55,4 @@ function ProjectExplorerViewHeader({ title }: Props) {
   );
 }
 
-export default ProjectExplorerViewHeader;
+export default Header;

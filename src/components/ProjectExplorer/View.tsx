@@ -1,22 +1,22 @@
-import { useAppSelector } from "../hooks/store";
-import ProjectExplorerViewFolder from "./ProjectExplorerViewFolder";
-import ProjectExplorerViewHeader from "./ProjectExplorerViewHeader";
+import Folder from "./Folder";
+import Header from "./Header";
 import { MdOutlineFileOpen } from "react-icons/md";
+import { useAppSelector } from "../../hooks";
 
 const title = "Project Explorer";
 
-function ProjectExplorerView() {
+function View() {
   const fileTree = useAppSelector(s => s.fs.fileTree);
 
   return (
     <>
-      <ProjectExplorerViewHeader title={title} />
+      <Header title={title} />
 
       <section className="mt-2 text-sm text-neutral-800">
         {fileTree?.map(f => {
           if (f.children) {
             return (
-              <ProjectExplorerViewFolder
+              <Folder
                 key={f.name}
                 name={f.name}
                 content={f.children!}
@@ -30,7 +30,7 @@ function ProjectExplorerView() {
   );
 }
 
-ProjectExplorerView.title = title;
-ProjectExplorerView.icon = <MdOutlineFileOpen />
+View.title = title;
+View.icon = <MdOutlineFileOpen />
 
-export default ProjectExplorerView;
+export default View;

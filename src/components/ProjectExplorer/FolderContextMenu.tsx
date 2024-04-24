@@ -4,12 +4,18 @@ import OverlayMenuItem from "../OverlayMenuItem";
 import { createPortal } from "react-dom";
 
 interface Props {
+  fileName: string
   isShown: boolean
   position: [number, number]
   handleClose: () => void
 }
 
-function ProjectExplorerViewHeaderMenu({ isShown, position, handleClose }: Props) {
+function FolderContextMenu({
+  fileName,
+  isShown,
+  position,
+  handleClose,
+}: Props) {
   const containerEl = document.querySelector("#overlay-container")!;
 
   return (
@@ -17,16 +23,18 @@ function ProjectExplorerViewHeaderMenu({ isShown, position, handleClose }: Props
       {isShown && createPortal((
         <OverlayMenu boxPosition={position} handleClose={handleClose}>
           <OverlayMenuGroup>
-            <OverlayMenuItem>New empty file</OverlayMenuItem>
+            <OverlayMenuItem>New file</OverlayMenuItem>
+            <OverlayMenuItem>New folder</OverlayMenuItem>
           </OverlayMenuGroup>
 
           <OverlayMenuGroup>
-            <OverlayMenuItem>Open file</OverlayMenuItem>
-            <OverlayMenuItem>Open directory</OverlayMenuItem>
+            <OverlayMenuItem>Cut</OverlayMenuItem>
+            <OverlayMenuItem>Copy</OverlayMenuItem>
+            <OverlayMenuItem>Rename {`"${fileName}"`} to ...</OverlayMenuItem>
           </OverlayMenuGroup>
 
           <OverlayMenuGroup>
-            <OverlayMenuItem dangerous>Close directory</OverlayMenuItem>
+            <OverlayMenuItem dangerous>Delete {`"${fileName}"`}</OverlayMenuItem>
           </OverlayMenuGroup>
         </OverlayMenu>
       ), containerEl)}
@@ -34,4 +42,4 @@ function ProjectExplorerViewHeaderMenu({ isShown, position, handleClose }: Props
   );
 }
 
-export default ProjectExplorerViewHeaderMenu;
+export default FolderContextMenu;

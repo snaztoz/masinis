@@ -1,6 +1,6 @@
-import FileEntry from "../contracts/fs";
-import ProjectExplorerViewFile from "./ProjectExplorerViewFile";
-import ProjectExplorerViewFolderContextMenu from "./menu/ProjectExplorerViewFolderContextMenu";
+import File from "./File";
+import FileEntry from "../../contracts/fs";
+import FolderContextMenu from "./FolderContextMenu";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
@@ -39,7 +39,7 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
       nestingLevel={nestingLevel + 1}
     />
   ) : (
-    <ProjectExplorerViewFile
+    <File
       key={f.name}
       name={f.name}
       nestingLevel={nestingLevel + 1}
@@ -82,7 +82,7 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
         {isExpanded && contentElements}
       </div>
 
-      <ProjectExplorerViewFolderContextMenu
+      <FolderContextMenu
         fileName={name}
         position={contextMenuPosition}
         isShown={showContextMenu}
