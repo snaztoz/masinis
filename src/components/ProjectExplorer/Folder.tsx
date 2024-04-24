@@ -62,7 +62,7 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
           onContextMenu={handleContextMenu}
         >
           <div
-            className="flex gap-1"
+            className="grow flex gap-1"
             // We are using manual CSS because Tailwind does not support
             // dynamic class that involves calculation like this
             style={{marginLeft: `${0.75 + 0.75 * nestingLevel}rem`}}

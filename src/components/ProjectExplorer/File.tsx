@@ -32,12 +32,12 @@ function File({ name, nestingLevel }: Props) {
   return (
     <>
       <button
-        className="w-full py-0.5 dark:text-neutral-300 hover:bg-neutral-300
+        className="w-full py-0.5 flex dark:text-neutral-300 hover:bg-neutral-300
           dark:hover:bg-neutral-800"
         onContextMenu={handleContextMenu}
       >
         <div
-          className="w-full flex items-center gap-1"
+          className="grow flex items-center gap-1"
           // We are using manual CSS because Tailwind does not support
           // dynamic class that involves calculation like this
           style={{marginLeft: `${0.75 + 0.75 * nestingLevel}rem`}}

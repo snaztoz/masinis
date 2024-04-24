@@ -12,7 +12,9 @@ function View() {
     <>
       <Header title={title} />
 
-      <section className="mt-2 text-sm text-neutral-800">
+      <section
+        className="grow overflow-auto mt-2 text-sm text-neutral-800"
+      >
         {fileTree?.map(f => {
           if (f.children) {
             return (
