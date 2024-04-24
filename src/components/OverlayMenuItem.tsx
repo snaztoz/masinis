@@ -1,5 +1,5 @@
+import { Adapters } from "../libs/adapters";
 import { ReactNode } from "react";
-import { cn } from "../libs/classnames";
 
 interface Props {
   dangerous?: boolean
@@ -8,6 +8,8 @@ interface Props {
 }
 
 function OverlayMenuItem({ dangerous, children, handleClick }: Props) {
+  const { cn } = Adapters;
+
   return (
     <button
       className={cn("px-3", "py-1", "text-left", "rounded",

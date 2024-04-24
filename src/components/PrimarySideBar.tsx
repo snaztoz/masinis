@@ -1,5 +1,5 @@
 import ProjectExplorerView from "./ProjectExplorer/View";
-import { cn } from "../libs/classnames";
+import { Adapters } from "../libs/adapters";
 import { createElement, useState } from "react";
 
 const views = {
@@ -9,6 +9,8 @@ const views = {
 type ViewId = keyof typeof views;
 
 function PrimarySideBar() {
+  const { cn } = Adapters;
+
   const [activeViewId, setActiveViewId] = useState<ViewId | null>("project-explorer");
 
   function toggleView(viewName: ViewId) {

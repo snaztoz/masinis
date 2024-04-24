@@ -1,9 +1,8 @@
 import FileContextMenu from "./FileContextMenu";
 import useMenu from "../../hooks/useMenu";
+import { Icons } from "../../libs/icons";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-
 import { createElement } from "react";
-import { inferFileIcon } from "../../libs/files";
 
 interface Props {
   name: string
@@ -11,7 +10,7 @@ interface Props {
 }
 
 function File({ name, nestingLevel }: Props) {
-  const icon = inferFileIcon(name);
+  const icon = Icons.inferFileIcon(name);
 
   const {
     isMenuShown,
