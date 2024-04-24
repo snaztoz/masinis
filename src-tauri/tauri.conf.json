@@ -20,6 +20,9 @@
         "confirm": true,
         "open": true,
         "save": true
+      },
+      "fs": {
+        "readDir": true
       }
     },
     "windows": [

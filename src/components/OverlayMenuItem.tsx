@@ -4,15 +4,17 @@ import { cn } from "../libs/classnames";
 interface Props {
   dangerous?: boolean
   children: ReactNode
+  handleClick?: () => void
 }
 
-function OverlayMenuItem({ dangerous, children }: Props) {
+function OverlayMenuItem({ dangerous, children, handleClick }: Props) {
   return (
     <button
       className={cn("px-3", "py-1", "text-left", "rounded",
         "hover:bg-neutral-300", "dark:hover:bg-neutral-700",
         { "text-red-400": dangerous }
       )}
+      onClick={handleClick}
     >
       {children}
     </button>

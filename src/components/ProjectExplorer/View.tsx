@@ -17,8 +17,8 @@ function View() {
           if (f.children) {
             return (
               <Folder
-                key={f.name}
-                name={f.name}
+                key={f.name!}
+                name={f.name!}
                 content={f.children!}
                 nestingLevel={0}
               />

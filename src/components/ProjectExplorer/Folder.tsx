@@ -1,7 +1,7 @@
 import File from "./File";
-import FileEntry from "../../contracts/fs";
 import FolderContextMenu from "./FolderContextMenu";
 import useMenu from "../../hooks/useMenu";
+import { FileEntry } from "@tauri-apps/api/fs";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
@@ -39,15 +39,15 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
 
   const contentElements = content.map(f => f.children ? (
     <ProjectExplorerViewFolder
-      key={f.name}
-      name={f.name}
+      key={f.name!}
+      name={f.name!}
       content={f.children!}
       nestingLevel={nestingLevel + 1}
     />
   ) : (
     <File
-      key={f.name}
-      name={f.name}
+      key={f.name!}
+      name={f.name!}
       nestingLevel={nestingLevel + 1}
     />
   ));
