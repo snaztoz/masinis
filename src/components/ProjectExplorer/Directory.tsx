@@ -1,14 +1,12 @@
 import File from "./File";
 import DirectoryContextMenu from "./DirectoryContextMenu";
 import useMenu from "../../hooks/useMenu";
-import { FileEntry } from "@tauri-apps/api/fs";
-import { Fs } from "../../libs/fs";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 import { TbFolder, TbFolderOpen } from "react-icons/tb";
-import { useEffect, useState } from "react";
+import { useDirectoryExpansion } from "./hooks/useDirectoryExpansion";
 
 interface Props {
   name: string
@@ -17,8 +15,12 @@ interface Props {
 }
 
 function Directory({ name, path, nestingLevel }: Props) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [directoryChildren, setDirectoryChildren] = useState<FileEntry[]>([]);
+  const {
+    isExpanded,
+    directoryChildren,
+    toggleDirectory,
+  } = useDirectoryExpansion(path);
+
   const {
     isMenuShown,
     menuPosition,
@@ -27,24 +29,12 @@ function Directory({ name, path, nestingLevel }: Props) {
     closeMenu,
   } = useMenu();
 
-  useEffect(() => {
-    if (isExpanded) {
-      Fs.readDirectoryChildren(path).then(c => {
-        setDirectoryChildren(c);
-      });
-    }
-  }, [isExpanded]);
-
   function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     e.stopPropagation();
 
     setMenuPosition({ x: e.pageX, y: e.pageY });
     openMenu();
-  }
-
-  function toggle() {
-    setIsExpanded(!isExpanded);
   }
 
   const contentElements = directoryChildren.map(f => f.children ? (
@@ -68,7 +58,7 @@ function Directory({ name, path, nestingLevel }: Props) {
         <button
           className="w-full py-0.5 dark:text-neutral-300 hover:bg-neutral-300
             dark:hover:bg-neutral-800"
-          onClick={toggle}
+          onClick={toggleDirectory}
           onContextMenu={handleContextMenu}
         >
           <div
