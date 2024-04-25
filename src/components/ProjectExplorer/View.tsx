@@ -1,5 +1,6 @@
 import Folder from "./Folder";
 import Header from "./Header";
+import NoSelectedProject from "./NoSelectedProject";
 import { MdOutlineFileOpen } from "react-icons/md";
 import { useAppSelector } from "../../hooks";
 
@@ -16,12 +17,14 @@ function View() {
       <section
         className="grow overflow-auto mt-2 text-sm text-neutral-800"
       >
-        {directoryPath && (
+        {directoryPath ? (
           <Folder
             name={directoryName!}
             path={directoryPath}
             nestingLevel={0}
           />
+        ) : (
+          <NoSelectedProject />
         )}
       </section>
     </>
