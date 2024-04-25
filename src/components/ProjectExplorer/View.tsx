@@ -19,6 +19,7 @@ function View() {
       >
         {directoryPath ? (
           <Folder
+            key={directoryPath}
             name={directoryName!}
             path={directoryPath}
             nestingLevel={0}
