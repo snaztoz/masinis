@@ -16,7 +16,7 @@ interface Props {
   nestingLevel: number
 }
 
-function ProjectExplorerViewFolder({ name, path, nestingLevel }: Props) {
+function Folder({ name, path, nestingLevel }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [directoryChildren, setDirectoryChildren] = useState<FileEntry[]>([]);
   const {
@@ -48,7 +48,7 @@ function ProjectExplorerViewFolder({ name, path, nestingLevel }: Props) {
   }
 
   const contentElements = directoryChildren.map(f => f.children ? (
-    <ProjectExplorerViewFolder
+    <Folder
       key={f.name!}
       name={f.name!}
       path={f.path!}
@@ -108,4 +108,4 @@ function ProjectExplorerViewFolder({ name, path, nestingLevel }: Props) {
   );
 }
 
-export default ProjectExplorerViewFolder;
+export default Folder;
