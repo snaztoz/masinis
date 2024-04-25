@@ -1,9 +1,9 @@
-import fsReducer from "./slices/fs";
+import projectReducer from "./slices/project";
 import { configureStore } from "@reduxjs/toolkit"
 
 export const store = configureStore({
   reducer: {
-    fs: fsReducer,
+    project: projectReducer,
   },
 });
 

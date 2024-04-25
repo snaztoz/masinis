@@ -4,7 +4,7 @@ import OverlayMenuItem from "../OverlayMenuItem";
 import { Fs } from "../../libs/fs";
 import { OverlayMenuPosition } from "../../contracts/overlay_menu";
 import { createPortal } from "react-dom";
-import { readDirectoryContent } from "../../slices/fs";
+import { setDirectoryPath } from "../../slices/project";
 import { useAppDispatch } from "../../hooks";
 
 interface Props {
@@ -21,7 +21,7 @@ function HeaderMenu({ isShown, position, handleClose }: Props) {
   async function handleOpenDirectory() {
     const path = await Fs.showOpenDirectoryDialog();
     if (path) {
-      dispatch(readDirectoryContent(path));
+      dispatch(setDirectoryPath(path));
     }
     handleClose();
   }

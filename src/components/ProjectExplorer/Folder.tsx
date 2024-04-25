@@ -2,21 +2,23 @@ import File from "./File";
 import FolderContextMenu from "./FolderContextMenu";
 import useMenu from "../../hooks/useMenu";
 import { FileEntry } from "@tauri-apps/api/fs";
+import { Fs } from "../../libs/fs";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 import { TbFolder, TbFolderOpen } from "react-icons/tb";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   name: string
-  content: FileEntry[]
+  path: string
   nestingLevel: number
 }
 
-function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
+function ProjectExplorerViewFolder({ name, path, nestingLevel }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [directoryChildren, setDirectoryChildren] = useState<FileEntry[]>([]);
   const {
     isMenuShown,
     menuPosition,
@@ -24,6 +26,14 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
     openMenu,
     closeMenu,
   } = useMenu();
+
+  useEffect(() => {
+    if (isExpanded) {
+      Fs.readDirectoryChildren(path).then(c => {
+        setDirectoryChildren(c);
+      });
+    }
+  }, [isExpanded]);
 
   function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -37,11 +47,11 @@ function ProjectExplorerViewFolder({ name, content, nestingLevel }: Props) {
     setIsExpanded(!isExpanded);
   }
 
-  const contentElements = content.map(f => f.children ? (
+  const contentElements = directoryChildren.map(f => f.children ? (
     <ProjectExplorerViewFolder
       key={f.name!}
       name={f.name!}
-      content={f.children!}
+      path={f.path!}
       nestingLevel={nestingLevel + 1}
     />
   ) : (

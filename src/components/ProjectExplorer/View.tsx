@@ -6,7 +6,8 @@ import { useAppSelector } from "../../hooks";
 const title = "Project Explorer";
 
 function View() {
-  const fileTree = useAppSelector(s => s.fs.fileTree);
+  const directoryPath = useAppSelector(s => s.project.directoryPath);
+  const directoryName = directoryPath?.split(/[\/\\]/).pop();
 
   return (
     <>
@@ -15,18 +16,13 @@ function View() {
       <section
         className="grow overflow-auto mt-2 text-sm text-neutral-800"
       >
-        {fileTree?.map(f => {
-          if (f.children) {
-            return (
-              <Folder
-                key={f.name!}
-                name={f.name!}
-                content={f.children!}
-                nestingLevel={0}
-              />
-            );
-          }
-        })}
+        {directoryPath && (
+          <Folder
+            name={directoryName!}
+            path={directoryPath}
+            nestingLevel={0}
+          />
+        )}
       </section>
     </>
   );
