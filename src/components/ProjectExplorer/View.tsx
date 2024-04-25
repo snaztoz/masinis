@@ -1,4 +1,4 @@
-import Folder from "./Folder";
+import Directory from "./Directory";
 import Header from "./Header";
 import NoSelectedProject from "./NoSelectedProject";
 import { MdOutlineFileOpen } from "react-icons/md";
@@ -18,7 +18,7 @@ function View() {
         className="grow overflow-auto mt-2 text-sm text-neutral-800"
       >
         {directoryPath ? (
-          <Folder
+          <Directory
             key={directoryPath}
             name={directoryName!}
             path={directoryPath}

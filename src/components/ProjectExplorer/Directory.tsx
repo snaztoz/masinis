@@ -1,5 +1,5 @@
 import File from "./File";
-import FolderContextMenu from "./FolderContextMenu";
+import DirectoryContextMenu from "./DirectoryContextMenu";
 import useMenu from "../../hooks/useMenu";
 import { FileEntry } from "@tauri-apps/api/fs";
 import { Fs } from "../../libs/fs";
@@ -16,7 +16,7 @@ interface Props {
   nestingLevel: number
 }
 
-function Folder({ name, path, nestingLevel }: Props) {
+function Directory({ name, path, nestingLevel }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [directoryChildren, setDirectoryChildren] = useState<FileEntry[]>([]);
   const {
@@ -48,7 +48,7 @@ function Folder({ name, path, nestingLevel }: Props) {
   }
 
   const contentElements = directoryChildren.map(f => f.children ? (
-    <Folder
+    <Directory
       key={f.name!}
       name={f.name!}
       path={f.path!}
@@ -98,7 +98,7 @@ function Folder({ name, path, nestingLevel }: Props) {
         {isExpanded && contentElements}
       </div>
 
-      <FolderContextMenu
+      <DirectoryContextMenu
         fileName={name}
         position={menuPosition}
         isShown={isMenuShown}
@@ -108,4 +108,4 @@ function Folder({ name, path, nestingLevel }: Props) {
   );
 }
 
-export default Folder;
+export default Directory;

@@ -11,7 +11,7 @@ interface Props {
   handleClose: () => void
 }
 
-function FolderContextMenu({
+function DirectoryContextMenu({
   fileName,
   isShown,
   position,
@@ -25,7 +25,7 @@ function FolderContextMenu({
         <OverlayMenu boxPosition={position} handleClose={handleClose}>
           <OverlayMenuGroup>
             <OverlayMenuItem>New file</OverlayMenuItem>
-            <OverlayMenuItem>New folder</OverlayMenuItem>
+            <OverlayMenuItem>New directory</OverlayMenuItem>
           </OverlayMenuGroup>
 
           <OverlayMenuGroup>
@@ -43,4 +43,4 @@ function FolderContextMenu({
   );
 }
 
-export default FolderContextMenu;
+export default DirectoryContextMenu;
