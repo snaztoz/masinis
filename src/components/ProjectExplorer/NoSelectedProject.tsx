@@ -1,17 +1,8 @@
-import { Fs } from "../../libs/fs";
 import { LuFolderTree } from "react-icons/lu";
-import { setDirectoryPath } from "../../slices/project";
-import { useAppDispatch } from "../../hooks";
+import { useOpenDirectoryDialog } from "./hooks/useOpenDirectoryDialog";
 
 function NoSelectedProject() {
-  const dispatch = useAppDispatch();
-
-  async function handleOpenDirectory() {
-    const path = await Fs.showOpenDirectoryDialog();
-    if (path) {
-      dispatch(setDirectoryPath(path));
-    }
-  }
+  const { handleOpenDirectory } = useOpenDirectoryDialog();
 
   return (
     <div
