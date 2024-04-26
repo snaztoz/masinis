@@ -1,6 +1,7 @@
 import File from "./File";
 import DirectoryContextMenu from "./DirectoryContextMenu";
 import useMenu from "../../hooks/useMenu";
+import { Adapters } from "../../libs/adapters";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
@@ -15,6 +16,8 @@ interface Props {
 }
 
 function Directory({ name, path, nestingLevel }: Props) {
+  const { cn } = Adapters;
+
   const {
     isExpanded,
     directoryChildren,
@@ -56,8 +59,10 @@ function Directory({ name, path, nestingLevel }: Props) {
     <>
       <div className="w-full">
         <button
-          className="w-full py-0.5 dark:text-neutral-300 hover:bg-neutral-300
-            dark:hover:bg-neutral-800"
+          className={cn("w-full", "py-0.5", "dark:text-neutral-300", "border",
+            "border-dashed", "hover:bg-neutral-300", "dark:hover:bg-neutral-800",
+            isMenuShown ? "border-pink-400" : "border-transparent",
+          )}
           onClick={toggleDirectory}
           onContextMenu={handleContextMenu}
         >

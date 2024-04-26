@@ -1,8 +1,9 @@
 import FileContextMenu from "./FileContextMenu";
 import useMenu from "../../hooks/useMenu";
+import { Adapters } from "../../libs/adapters";
 import { Icons } from "../../libs/icons";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { createElement } from "react";
+import { createElement, useState } from "react";
 
 interface Props {
   name: string
@@ -11,6 +12,9 @@ interface Props {
 
 function File({ name, nestingLevel }: Props) {
   const icon = Icons.inferFileIcon(name);
+  const { cn } = Adapters;
+
+  const [focused, setFocused] = useState(false);
 
   const {
     isMenuShown,
@@ -31,9 +35,13 @@ function File({ name, nestingLevel }: Props) {
   return (
     <>
       <button
-        className="w-full py-0.5 flex dark:text-neutral-300 hover:bg-neutral-300
-          dark:hover:bg-neutral-800"
+        className={cn("w-full", "py-0.5", "flex", "dark:text-neutral-300",
+          "border", "border-dashed", "hover:bg-neutral-300", "dark:hover:bg-neutral-800",
+          focused ? "border-pink-400" : "border-transparent",
+        )}
         onContextMenu={handleContextMenu}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
       >
         <div
           className="grow flex items-center gap-1"
