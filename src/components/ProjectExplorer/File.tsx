@@ -27,6 +27,7 @@ function File({ name, nestingLevel }: Props) {
   function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     e.stopPropagation();
+    setFocused(true);
 
     setMenuPosition({ x: e.pageX, y: e.pageY });
     openMenu();
@@ -40,7 +41,6 @@ function File({ name, nestingLevel }: Props) {
           focused ? "border-pink-400" : "border-transparent",
         )}
         onContextMenu={handleContextMenu}
-        onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       >
         <div
