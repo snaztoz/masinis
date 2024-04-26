@@ -13,10 +13,14 @@ export const projectSlice = createSlice({
   reducers: {
     setDirectoryPath: (state, action: PayloadAction<string>) => {
       state.directoryPath = action.payload;
+    },
+
+    unsetDirectoryPath: (state) => {
+      state.directoryPath = undefined;
     }
   },
 });
 
-export const { setDirectoryPath } = projectSlice.actions;
+export const { setDirectoryPath, unsetDirectoryPath } = projectSlice.actions;
 
 export default projectSlice.reducer;

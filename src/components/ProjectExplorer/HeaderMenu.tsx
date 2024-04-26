@@ -3,6 +3,7 @@ import OverlayMenuGroup from "../OverlayMenuGroup";
 import OverlayMenuItem from "../OverlayMenuItem";
 import { OverlayMenuPosition } from "../../contracts/overlay_menu";
 import { createPortal } from "react-dom";
+import { useCloseDirectory } from "./hooks/useCloseDirectory";
 import { useOpenDirectoryDialog } from "./hooks/useOpenDirectoryDialog";
 
 interface Props {
@@ -15,6 +16,7 @@ function HeaderMenu({ isShown, position, handleClose }: Props) {
   const containerEl = document.querySelector("#overlay-container")!;
 
   const { handleOpenDirectory } = useOpenDirectoryDialog(() => handleClose());
+  const { handleCloseDirectory } = useCloseDirectory(() => handleClose());
 
   return (
     <>
@@ -32,7 +34,12 @@ function HeaderMenu({ isShown, position, handleClose }: Props) {
           </OverlayMenuGroup>
 
           <OverlayMenuGroup>
-            <OverlayMenuItem dangerous>Close directory</OverlayMenuItem>
+            <OverlayMenuItem
+              dangerous
+              handleClick={handleCloseDirectory}
+            >
+              Close directory
+            </OverlayMenuItem>
           </OverlayMenuGroup>
         </OverlayMenu>
       ), containerEl)}
