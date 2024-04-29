@@ -9,7 +9,7 @@ interface Props {
 
 function Tab({ title, isActive, handleClick }: Props) {
   const { cn } = Adapters;
-  const Icon = Icons.inferFileIcon(title);
+  const [Icon, iconColorClass] = Icons.inferFileIcon(title);
 
   return (
     <button
@@ -21,7 +21,7 @@ function Tab({ title, isActive, handleClick }: Props) {
       )}
       onClick={handleClick}
     >
-      <div className="w-5 flex justify-center">
+      <div className={cn("w-5", "flex", "justify-center", iconColorClass)}>
         <Icon />
       </div>
       <span className="text-left overflow-x-hidden text-ellipsis">

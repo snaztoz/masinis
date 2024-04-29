@@ -11,7 +11,7 @@ interface Props {
 }
 
 function File({ name, nestingLevel }: Props) {
-  const icon = Icons.inferFileIcon(name);
+  const [icon, iconColorClass] = Icons.inferFileIcon(name);
   const { cn } = Adapters;
 
   const [focused, setFocused] = useState(false);
@@ -52,7 +52,11 @@ function File({ name, nestingLevel }: Props) {
           <div className="invisible text-lg">
             <MdOutlineKeyboardArrowRight />
           </div>
-          <div className="w-5 text-sm flex justify-center">
+          <div
+            className={cn("w-5", "text-sm", "flex", "justify-center",
+              iconColorClass,
+            )}
+          >
             {createElement(icon)}
           </div>
           <p>{name}</p>
