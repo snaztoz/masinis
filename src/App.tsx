@@ -1,3 +1,4 @@
+import MainView from "./components/MainView";
 import PrimarySideBar from "./components/PrimarySideBar";
 
 function App() {
@@ -9,10 +10,7 @@ function App() {
       onContextMenu={(e) => e.preventDefault()}
     >
       <main className="w-full h-full flex">
-        <section className="grow bg-neutral-50 dark:bg-neutral-800 rounded-lg">
-          <h1>Hello, World!</h1>
-        </section>
-
+        <MainView />
         <PrimarySideBar />
       </main>
 

@@ -25,7 +25,7 @@ function PrimarySideBar() {
     <div className="flex">
       {activeViewId && (
         <div
-          className="py-2 flex flex-col border-r border-neutral-300
+          className="py-2 flex flex-col border-x border-neutral-300
             dark:border-neutral-800 w-72 lg:w-80 select-none"
         >
           {/* without using JSX because the view is dynamically selected */}
