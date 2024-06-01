@@ -61,6 +61,7 @@ function Directory({ name, path, nestingLevel }: Props) {
         <button
           className={cn("w-full", "py-0.5", "dark:text-neutral-300", "border",
             "border-dashed", "hover:bg-neutral-300", "dark:hover:bg-neutral-800",
+            "dark:focus:bg-neutral-800",
             isMenuShown ? "border-pink-400" : "border-transparent",
           )}
           onClick={toggleDirectory}

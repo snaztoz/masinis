@@ -3,7 +3,6 @@ import useMenu from "../../hooks/useMenu";
 import { Adapters } from "../../libs/adapters";
 import { Icons } from "../../libs/icons";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { createElement, useState } from "react";
 
 interface Props {
   name: string
@@ -11,10 +10,8 @@ interface Props {
 }
 
 function File({ name, nestingLevel }: Props) {
-  const [icon, iconColorClass] = Icons.inferFileIcon(name);
+  const [Icon, iconColorClass] = Icons.inferFileIcon(name);
   const { cn } = Adapters;
-
-  const [focused, setFocused] = useState(false);
 
   const {
     isMenuShown,
@@ -27,7 +24,6 @@ function File({ name, nestingLevel }: Props) {
   function handleContextMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     e.stopPropagation();
-    setFocused(true);
 
     setMenuPosition({ x: e.pageX, y: e.pageY });
     openMenu();
@@ -37,11 +33,11 @@ function File({ name, nestingLevel }: Props) {
     <>
       <button
         className={cn("w-full", "py-0.5", "flex", "dark:text-neutral-300",
-          "border", "border-dashed", "hover:bg-neutral-300", "dark:hover:bg-neutral-800",
-          focused ? "border-pink-400" : "border-transparent",
+          "dark:focus:bg-neutral-800", "hover:bg-neutral-300",
+          "dark:hover:bg-neutral-800", "border", "border-dashed",
+          isMenuShown ? "border-pink-400" : "border-transparent",
         )}
         onContextMenu={handleContextMenu}
-        onBlur={() => setFocused(false)}
       >
         <div
           className="grow flex items-center gap-1"
@@ -57,7 +53,7 @@ function File({ name, nestingLevel }: Props) {
               iconColorClass,
             )}
           >
-            {createElement(icon)}
+            <Icon />
           </div>
           <p>{name}</p>
         </div>

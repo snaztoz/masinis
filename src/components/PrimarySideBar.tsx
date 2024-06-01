@@ -1,6 +1,6 @@
 import ProjectExplorerView from "./ProjectExplorer/View";
 import { Adapters } from "../libs/adapters";
-import { createElement, useState } from "react";
+import { useState } from "react";
 
 const views = {
   "project-explorer": ProjectExplorerView,
@@ -13,6 +13,8 @@ function PrimarySideBar() {
 
   const [activeViewId, setActiveViewId] = useState<ViewId | null>("project-explorer");
 
+  const View = activeViewId && views[activeViewId];
+
   function toggleView(viewName: ViewId) {
     if (viewName === activeViewId) {
       setActiveViewId(null);
@@ -23,13 +25,12 @@ function PrimarySideBar() {
 
   return (
     <div className="flex">
-      {activeViewId && (
+      {View && (
         <div
           className="py-2 flex flex-col border-x border-neutral-300
             dark:border-neutral-800 w-72 lg:w-80 select-none"
         >
-          {/* without using JSX because the view is dynamically selected */}
-          {createElement(views[activeViewId])}
+          <View />
         </div>
       )}
 
