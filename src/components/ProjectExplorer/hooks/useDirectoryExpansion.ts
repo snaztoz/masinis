@@ -1,6 +1,6 @@
-import { FileEntry } from "@tauri-apps/api/fs";
-import { Fs } from "../../../libs/fs";
-import { useEffect, useState } from "react";
+import { FileEntry } from '@tauri-apps/api/fs';
+import { Fs } from '../../../libs/fs';
+import { useEffect, useState } from 'react';
 
 export function useDirectoryExpansion(path: string) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -8,7 +8,7 @@ export function useDirectoryExpansion(path: string) {
 
   useEffect(() => {
     if (isExpanded) {
-      Fs.readDirectoryChildren(path).then(c => {
+      Fs.readDirectoryChildren(path).then((c) => {
         setDirectoryChildren(c);
       });
     }

@@ -1,21 +1,16 @@
-import HeaderMenu from "./HeaderMenu";
-import useMenu from "../../hooks/useMenu";
-import { MdMoreVert } from "react-icons/md";
-import { useRef } from "react";
+import HeaderMenu from './HeaderMenu';
+import useMenu from '../../hooks/useMenu';
+import { MdMoreVert } from 'react-icons/md';
+import { useRef } from 'react';
 
 interface Props {
-  title: string
+  title: string;
 }
 
 function Header({ title }: Props) {
   const menuTogglerRef = useRef<HTMLDivElement>(null);
-  const {
-    isMenuShown,
-    menuPosition,
-    setMenuPosition,
-    openMenu,
-    closeMenu,
-  } = useMenu();
+  const { isMenuShown, menuPosition, setMenuPosition, openMenu, closeMenu } =
+    useMenu();
 
   function handleMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -32,16 +27,11 @@ function Header({ title }: Props) {
   return (
     <>
       <header className="flex justify-between px-4">
-        <h2
-          className="text-sm text-neutral-500 dark:text-neutral-400 font-medium"
-        >
+        <h2 className="text-sm text-neutral-500 dark:text-neutral-400 font-medium">
           {title}
         </h2>
 
-        <div
-          ref={menuTogglerRef}
-          className="relative flex items-center"
-        >
+        <div ref={menuTogglerRef} className="relative flex items-center">
           <button
             className="text-neutral-400 hover:text-neutral-500
               dark:hover:text-neutral-300"

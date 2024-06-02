@@ -1,9 +1,9 @@
-import ProjectExplorerView from "./ProjectExplorer/View";
-import { Adapters } from "../libs/adapters";
-import { useState } from "react";
+import ProjectExplorerView from './ProjectExplorer/View';
+import { Adapters } from '../libs/adapters';
+import { useState } from 'react';
 
 const views = {
-  "project-explorer": ProjectExplorerView,
+  'project-explorer': ProjectExplorerView,
 };
 
 type ViewId = keyof typeof views;
@@ -11,7 +11,9 @@ type ViewId = keyof typeof views;
 function PrimarySideBar() {
   const { cn } = Adapters;
 
-  const [activeViewId, setActiveViewId] = useState<ViewId | null>("project-explorer");
+  const [activeViewId, setActiveViewId] = useState<ViewId | null>(
+    'project-explorer'
+  );
 
   const View = activeViewId && views[activeViewId];
 
@@ -36,10 +38,7 @@ function PrimarySideBar() {
 
       <nav className="p-2 flex flex-col gap-2 text-neutral-400">
         {Object.entries(views).map(([viewId, viewProperties]) => (
-          <div
-            key={viewId}
-            className="group relative"
-          >
+          <div key={viewId} className="group relative">
             <span
               className="hidden group-hover:block px-2 py-0.5 w-fit absolute
                 top-1/4 right-[110%] rounded text-nowrap text-xs
@@ -51,9 +50,16 @@ function PrimarySideBar() {
             </span>
             <button
               key={viewId}
-              className={cn("p-2", "rounded-full", "text-2xl",
-                "hover:text-neutral-500", "dark:hover:text-neutral-300",
-                { "text-neutral-500 dark:text-neutral-300": viewId === activeViewId }
+              className={cn(
+                'p-2',
+                'rounded-full',
+                'text-2xl',
+                'hover:text-neutral-500',
+                'dark:hover:text-neutral-300',
+                {
+                  'text-neutral-500 dark:text-neutral-300':
+                    viewId === activeViewId,
+                }
               )}
               onClick={() => toggleView(viewId as ViewId)}
             >

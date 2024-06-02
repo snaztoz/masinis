@@ -1,16 +1,16 @@
-import { OverlayMenuPosition } from "../contracts/overlay_menu";
-import { ReactNode } from "react";
+import { OverlayMenuPosition } from '../contracts/overlay_menu';
+import { ReactNode } from 'react';
 
 interface BoxPosition {
-  top?: string
-  right?: string
-  bottom?: string
-  left?: string
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
 }
 
 interface Props {
-  position: OverlayMenuPosition
-  children: ReactNode
+  position: OverlayMenuPosition;
+  children: ReactNode;
 }
 
 function OverlayMenuBox({ position, children }: Props) {
@@ -38,16 +38,14 @@ function OverlayMenuBox({ position, children }: Props) {
         text-sm rounded"
       style={getPositionStyles()}
       onClick={(e) => {
-        e.stopPropagation()
+        e.stopPropagation();
       }}
       onContextMenu={(e) => {
         e.preventDefault();
         e.stopPropagation();
       }}
     >
-      <div className="flex flex-col">
-        {children}
-      </div>
+      <div className="flex flex-col">{children}</div>
     </nav>
   );
 }

@@ -1,22 +1,20 @@
-import Directory from "./Directory";
-import Header from "./Header";
-import NoSelectedProject from "./NoSelectedProject";
-import { MdOutlineFileOpen } from "react-icons/md";
-import { useAppSelector } from "../../hooks";
+import Directory from './Directory';
+import Header from './Header';
+import NoSelectedProject from './NoSelectedProject';
+import { MdOutlineFileOpen } from 'react-icons/md';
+import { useAppSelector } from '../../hooks';
 
-const title = "Project Explorer";
+const title = 'Project Explorer';
 
 function View() {
-  const directoryPath = useAppSelector(s => s.project.directoryPath);
+  const directoryPath = useAppSelector((s) => s.project.directoryPath);
   const directoryName = directoryPath?.split(/[\/\\]/).pop();
 
   return (
     <>
       <Header title={title} />
 
-      <section
-        className="grow overflow-auto mt-2 text-sm text-neutral-800"
-      >
+      <section className="grow overflow-auto mt-2 text-sm text-neutral-800">
         {directoryPath ? (
           <Directory
             key={directoryPath}
@@ -33,6 +31,6 @@ function View() {
 }
 
 View.title = title;
-View.icon = <MdOutlineFileOpen />
+View.icon = <MdOutlineFileOpen />;
 
 export default View;

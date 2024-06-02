@@ -1,13 +1,13 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface ProjectState {
-  directoryPath?: string
+  directoryPath?: string;
 }
 
 const initialState: ProjectState = {};
 
 export const projectSlice = createSlice({
-  name: "project",
+  name: 'project',
   initialState,
 
   reducers: {
@@ -17,7 +17,7 @@ export const projectSlice = createSlice({
 
     unsetDirectoryPath: (state) => {
       state.directoryPath = undefined;
-    }
+    },
   },
 });
 

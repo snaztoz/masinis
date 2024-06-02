@@ -1,11 +1,11 @@
-import OverlayMenuBox from "./OverlayMenuBox";
-import { OverlayMenuPosition } from "../contracts/overlay_menu";
-import { ReactNode } from "react";
+import OverlayMenuBox from './OverlayMenuBox';
+import { OverlayMenuPosition } from '../contracts/overlay_menu';
+import { ReactNode } from 'react';
 
 interface Props {
-  boxPosition: OverlayMenuPosition
-  children: ReactNode
-  handleClose: () => void
+  boxPosition: OverlayMenuPosition;
+  children: ReactNode;
+  handleClose: () => void;
 }
 
 function OverlayMenu({ boxPosition, children, handleClose }: Props) {
@@ -20,9 +20,7 @@ function OverlayMenu({ boxPosition, children, handleClose }: Props) {
         handleClose();
       }}
     >
-      <OverlayMenuBox position={boxPosition}>
-        {children}
-      </OverlayMenuBox>
+      <OverlayMenuBox position={boxPosition}>{children}</OverlayMenuBox>
     </div>
   );
 }

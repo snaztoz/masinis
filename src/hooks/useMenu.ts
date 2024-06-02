@@ -1,5 +1,5 @@
-import { OverlayMenuPosition } from "../contracts/overlay_menu";
-import { useState } from "react";
+import { OverlayMenuPosition } from '../contracts/overlay_menu';
+import { useState } from 'react';
 
 function useMenu() {
   const [isMenuShown, setIsMenuShown] = useState(false);

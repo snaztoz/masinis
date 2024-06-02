@@ -1,5 +1,5 @@
-import MainView from "./components/MainView";
-import PrimarySideBar from "./components/PrimarySideBar";
+import MainView from './components/MainView';
+import PrimarySideBar from './components/PrimarySideBar';
 
 function App() {
   return (

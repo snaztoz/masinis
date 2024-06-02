@@ -1,18 +1,21 @@
-import { FileEntry, readDir } from "@tauri-apps/api/fs";
-import { open as openDialog } from "@tauri-apps/api/dialog";
+import { FileEntry, readDir } from '@tauri-apps/api/fs';
+import { open as openDialog } from '@tauri-apps/api/dialog';
 
 export namespace Fs {
   export async function showOpenDirectoryDialog(): Promise<string | null> {
     const selected = await openDialog({ directory: true, recursive: true });
-    if (typeof selected !== "string") {
+    if (typeof selected !== 'string') {
       return null;
     }
     return selected;
   }
 
-  export async function readDirectoryChildren(path: string): Promise<FileEntry[]> {
-    return await readDir(path, { recursive: false })
-      .then(children => sortDirectoryChildren(children));
+  export async function readDirectoryChildren(
+    path: string
+  ): Promise<FileEntry[]> {
+    return await readDir(path, { recursive: false }).then((children) =>
+      sortDirectoryChildren(children)
+    );
   }
 
   export function sortDirectoryChildren(children: FileEntry[]): FileEntry[] {

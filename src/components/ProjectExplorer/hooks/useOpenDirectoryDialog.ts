@@ -1,6 +1,6 @@
-import { Fs } from "../../../libs/fs";
-import { setDirectoryPath } from "../../../slices/project";
-import { useAppDispatch } from "../../../hooks"
+import { Fs } from '../../../libs/fs';
+import { setDirectoryPath } from '../../../slices/project';
+import { useAppDispatch } from '../../../hooks';
 
 export function useOpenDirectoryDialog(cleanup?: () => void) {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ export function useOpenDirectoryDialog(cleanup?: () => void) {
       dispatch(setDirectoryPath(path));
     }
     cleanup?.();
-  }
+  };
 
   return { handleOpenDirectory };
 }

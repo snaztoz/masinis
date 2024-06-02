@@ -1,5 +1,5 @@
-import { LuFolderTree } from "react-icons/lu";
-import { useOpenDirectoryDialog } from "./hooks/useOpenDirectoryDialog";
+import { LuFolderTree } from 'react-icons/lu';
+import { useOpenDirectoryDialog } from './hooks/useOpenDirectoryDialog';
 
 function NoSelectedProject() {
   const { handleOpenDirectory } = useOpenDirectoryDialog();
@@ -16,7 +16,9 @@ function NoSelectedProject() {
       <div className="text-center px-2">
         <h3 className="font-bold">No directory opened</h3>
 
-        <p className="mt-1">Your working directory contents will be shown here</p>
+        <p className="mt-1">
+          Your working directory contents will be shown here
+        </p>
       </div>
 
       <div>

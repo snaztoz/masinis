@@ -1,14 +1,14 @@
-import { FileEntry } from "@tauri-apps/api/fs";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { FileEntry } from '@tauri-apps/api/fs';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface File {
-  metadata: FileEntry
-  content: string
+  metadata: FileEntry;
+  content: string;
 }
 
 interface OpenedFilesState {
-  activeFile?: string
-  files: File[]
+  activeFile?: string;
+  files: File[];
 }
 
 const initialState: OpenedFilesState = {
@@ -16,13 +16,13 @@ const initialState: OpenedFilesState = {
 };
 
 export const projectSlice = createSlice({
-  name: "openedFiles",
+  name: 'openedFiles',
   initialState,
 
   reducers: {
     setActiveFile: (state, action: PayloadAction<string>) => {
-      state.activeFile = action.payload
-    }
+      state.activeFile = action.payload;
+    },
   },
 });
 

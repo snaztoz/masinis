@@ -1,13 +1,13 @@
 export interface OverlayMenuItem {
-  label: string
-  isDanger?: boolean
+  label: string;
+  isDanger?: boolean;
 }
 
 export interface OverlayMenuGroup {
-  content: OverlayMenuItem[]
+  content: OverlayMenuItem[];
 }
 
 export interface OverlayMenuPosition {
-  x: number
-  y: number
+  x: number;
+  y: number;
 }

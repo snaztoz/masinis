@@ -1,8 +1,8 @@
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { unsetDirectoryPath } from "../../../slices/project";
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { unsetDirectoryPath } from '../../../slices/project';
 
 export function useCloseDirectory(cleanup?: () => void) {
-  const directoryPath = useAppSelector(s => s.project.directoryPath);
+  const directoryPath = useAppSelector((s) => s.project.directoryPath);
   const dispatch = useAppDispatch();
 
   function handleCloseDirectory() {
