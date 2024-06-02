@@ -1,0 +1,15 @@
+{
+    "semi": true,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5",
+
+    "overrides": [
+        {
+            "files": "./src/**/*.css",
+            "options": {
+                "tabWidth": 4
+            }
+        }
+    ]
+}
