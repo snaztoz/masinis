@@ -1,7 +1,7 @@
 import FileContextMenu from './FileContextMenu';
-import useMenu from '../../hooks/useMenu';
-import { Adapters } from '../../libs/adapters';
-import { Icons } from '../../libs/icons';
+import useMenu from '../../../hooks/useMenu';
+import { Adapters } from '../../../libs/adapters';
+import { Icons } from '../../../libs/icons';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 interface Props {

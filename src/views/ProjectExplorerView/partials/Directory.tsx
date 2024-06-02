@@ -1,13 +1,13 @@
 import File from './File';
 import DirectoryContextMenu from './DirectoryContextMenu';
-import useMenu from '../../hooks/useMenu';
-import { Adapters } from '../../libs/adapters';
+import useMenu from '../../../hooks/useMenu';
+import { Adapters } from '../../../libs/adapters';
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
 import { TbFolder, TbFolderOpen } from 'react-icons/tb';
-import { useDirectoryExpansion } from './hooks/useDirectoryExpansion';
+import { useDirectoryExpansion } from '../hooks/useDirectoryExpansion';
 
 interface Props {
   name: string;

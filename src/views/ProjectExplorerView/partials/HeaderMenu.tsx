@@ -1,10 +1,10 @@
-import OverlayMenu from '../OverlayMenu';
-import OverlayMenuGroup from '../OverlayMenuGroup';
-import OverlayMenuItem from '../OverlayMenuItem';
-import { OverlayMenuPosition } from '../../contracts/overlay_menu';
+import OverlayMenu from '../../../components/OverlayMenu';
+import OverlayMenuGroup from '../../../components/OverlayMenuGroup';
+import OverlayMenuItem from '../../../components/OverlayMenuItem';
+import { OverlayMenuPosition } from '../../../contracts/overlay_menu';
 import { createPortal } from 'react-dom';
-import { useCloseDirectory } from './hooks/useCloseDirectory';
-import { useOpenDirectoryDialog } from './hooks/useOpenDirectoryDialog';
+import { useCloseDirectory } from '../hooks/useCloseDirectory';
+import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
 
 interface Props {
   isShown: boolean;

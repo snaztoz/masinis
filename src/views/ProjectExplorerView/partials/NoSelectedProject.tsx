@@ -1,5 +1,5 @@
 import { LuFolderTree } from 'react-icons/lu';
-import { useOpenDirectoryDialog } from './hooks/useOpenDirectoryDialog';
+import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
 
 function NoSelectedProject() {
   const { handleOpenDirectory } = useOpenDirectoryDialog();
