@@ -1,28 +1,15 @@
-import HeaderMenu from './HeaderMenu';
-import useMenu from '../../../hooks/useMenu';
+import Menu from '../../../components/Menu';
 import { MdMoreVert } from 'react-icons/md';
-import { useRef } from 'react';
+import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
+import { useCloseDirectory } from '../hooks/useCloseDirectory';
 
 interface Props {
   title: string;
 }
 
 function Header({ title }: Props) {
-  const menuTogglerRef = useRef<HTMLDivElement>(null);
-  const { isMenuShown, menuPosition, setMenuPosition, openMenu, closeMenu } =
-    useMenu();
-
-  function handleMenu(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const togglerPosition = menuTogglerRef.current?.getBoundingClientRect();
-    const x = togglerPosition!.right;
-    const y = togglerPosition!.bottom;
-
-    setMenuPosition({ x, y });
-    openMenu();
-  }
+  const { handleOpenDirectory } = useOpenDirectoryDialog();
+  const { handleCloseDirectory } = useCloseDirectory();
 
   return (
     <>
@@ -31,7 +18,46 @@ function Header({ title }: Props) {
           {title}
         </h2>
 
-        <div ref={menuTogglerRef} className="relative flex items-center">
+        <Menu>
+          <Menu.Trigger>
+            <button
+              className="text-neutral-500 dark:text-neutral-400
+                hover:text-neutral-400 dark:hover:text-neutral-300"
+            >
+              <MdMoreVert />
+            </button>
+          </Menu.Trigger>
+
+          <Menu.Content>
+            <Menu.Group>
+              <Menu.Item>New empty file</Menu.Item>
+            </Menu.Group>
+
+            <Menu.Group>
+              <Menu.Item>Open file</Menu.Item>
+              <Menu.Item
+                onClickWithCloser={(_, close) => {
+                  handleOpenDirectory().then(close);
+                }}
+              >
+                Open directory
+              </Menu.Item>
+            </Menu.Group>
+
+            <Menu.Group>
+              <Menu.Item
+                isDangerous
+                onClickWithCloser={(_, close) => {
+                  handleCloseDirectory();
+                  close();
+                }}
+              >
+                Close directory
+              </Menu.Item>
+            </Menu.Group>
+          </Menu.Content>
+        </Menu>
+        {/* <div ref={menuTogglerRef} className="relative flex items-center">
           <button
             className="text-neutral-400 hover:text-neutral-500
               dark:hover:text-neutral-300"
@@ -39,14 +65,14 @@ function Header({ title }: Props) {
           >
             <MdMoreVert />
           </button>
-        </div>
+        </div> */}
       </header>
 
-      <HeaderMenu
+      {/* <HeaderMenu
         position={menuPosition}
         isShown={isMenuShown}
         handleClose={closeMenu}
-      />
+      /> */}
     </>
   );
 }

@@ -13,8 +13,6 @@ function App() {
         <MainView />
         <PrimarySideBar />
       </main>
-
-      <div id="overlay-container"></div>
     </div>
   );
 }
