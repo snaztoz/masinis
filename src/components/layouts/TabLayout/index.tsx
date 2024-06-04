@@ -1,6 +1,8 @@
+import HStack from '../HStack';
 import Tab from './Tab';
 import TabDefaultView from './TabDefaultView';
 import TabItem from './TabItem';
+import VStack from '../VStack';
 import { useState } from 'react';
 
 interface Props {
@@ -11,8 +13,8 @@ function TabLayout({ tabs }: Props) {
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
 
   return (
-    <section className="grow h-full flex flex-col">
-      <nav className="flex">
+    <VStack className="grow h-full">
+      <HStack className="w-full">
         {tabs.map((tab) => (
           <Tab
             key={tab.id}
@@ -28,12 +30,12 @@ function TabLayout({ tabs }: Props) {
             }}
           />
         ))}
-      </nav>
+      </HStack>
 
-      <div className="grow bg-neutral-800">
+      <div className="grow w-full bg-neutral-800">
         {tabs.find((tab) => tab.id === activeTabId)?.view || <TabDefaultView />}
       </div>
-    </section>
+    </VStack>
   );
 }
 

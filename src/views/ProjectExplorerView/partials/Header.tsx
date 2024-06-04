@@ -1,3 +1,4 @@
+import HStack from '../../../components/layouts/HStack';
 import Menu from '../../../components/Menu';
 import { MdMoreVert } from 'react-icons/md';
 import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
@@ -13,7 +14,7 @@ function Header({ title }: Props) {
 
   return (
     <>
-      <header className="flex justify-between px-4">
+      <HStack className="w-full justify-between px-4">
         <h2 className="text-sm text-neutral-500 dark:text-neutral-400 font-medium">
           {title}
         </h2>
@@ -66,7 +67,7 @@ function Header({ title }: Props) {
             <MdMoreVert />
           </button>
         </div> */}
-      </header>
+      </HStack>
 
       {/* <HeaderMenu
         position={menuPosition}

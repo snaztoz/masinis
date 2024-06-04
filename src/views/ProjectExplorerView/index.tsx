@@ -14,7 +14,7 @@ function ProjectExplorer() {
     <>
       <Header title={title} />
 
-      <section className="grow overflow-auto mt-2 text-sm text-neutral-800">
+      <section className="w-full grow overflow-auto mt-2 text-sm text-neutral-800">
         {directoryPath ? (
           <Directory
             key={directoryPath}

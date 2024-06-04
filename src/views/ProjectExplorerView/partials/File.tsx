@@ -1,3 +1,4 @@
+import HStack from '../../../components/layouts/HStack';
 import Menu from '../../../components/Menu';
 import cn from 'classnames';
 import { Icons } from '../../../libs/icons';
@@ -21,8 +22,8 @@ function File({ name, nestingLevel }: Props) {
       <Menu asContextMenu>
         <Menu.Trigger>
           <button className={buttonClassName}>
-            <div
-              className="grow flex items-center gap-1"
+            <HStack
+              className="grow items-center gap-1"
               // We are using manual CSS because Tailwind does not support
               // dynamic class that involves calculation like this
               style={{ marginLeft: `${0.75 + 0.75 * nestingLevel}rem` }}
@@ -39,7 +40,7 @@ function File({ name, nestingLevel }: Props) {
                 <Icon />
               </div>
               <p>{name}</p>
-            </div>
+            </HStack>
           </button>
         </Menu.Trigger>
 

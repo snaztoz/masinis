@@ -1,9 +1,10 @@
-import TabLayout from '../../components/layouts/TabLayout';
+import HStack from '../../components/layouts/HStack';
 import PrimarySideBar from './partials/PrimarySideBar';
+import TabLayout from '../../components/layouts/TabLayout';
 
 function MainView() {
   return (
-    <main className="w-full h-full flex">
+    <HStack className="w-full h-full">
       <TabLayout
         tabs={[
           {
@@ -20,7 +21,7 @@ function MainView() {
       />
 
       <PrimarySideBar />
-    </main>
+    </HStack>
   );
 }
 

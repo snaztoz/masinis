@@ -1,4 +1,6 @@
+import HStack from '../../../components/layouts/HStack';
 import ProjectExplorerView from '../../ProjectExplorerView';
+import VStack from '../../../components/layouts/VStack';
 import cn from 'classnames';
 import { useState } from 'react';
 
@@ -19,18 +21,18 @@ function PrimarySideBar() {
   }
 
   return (
-    <div className="flex">
+    <HStack className="h-full">
       {View && (
-        <div
-          className="py-2 flex flex-col border-l border-neutral-300
-            dark:border-neutral-800 w-72 lg:w-80 select-none"
+        <VStack
+          className="h-full w-72 lg:w-80 py-2 border-l border-neutral-300
+            dark:border-neutral-800 select-none"
         >
           <View />
-        </div>
+        </VStack>
       )}
 
-      <nav
-        className="p-2 flex flex-col gap-2 border-l border-neutral-300
+      <VStack
+        className="h-full justify-start p-2 gap-2 border-l border-neutral-300
           dark:border-neutral-700 text-neutral-400"
       >
         {[...views].map((view, i) => {
@@ -67,8 +69,8 @@ function PrimarySideBar() {
             </div>
           );
         })}
-      </nav>
-    </div>
+      </VStack>
+    </HStack>
   );
 }
 

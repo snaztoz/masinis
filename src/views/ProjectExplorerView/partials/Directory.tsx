@@ -1,4 +1,5 @@
 import File from './File';
+import HStack from '../../../components/layouts/HStack';
 import Menu from '../../../components/Menu';
 import cn from 'classnames';
 import {
@@ -31,8 +32,8 @@ function Directory({ name, path, nestingLevel }: Props) {
               )}
               onClick={toggleDirectory}
             >
-              <div
-                className="grow flex gap-1"
+              <HStack
+                className="grow items-end gap-1"
                 // We are using manual CSS because Tailwind does not support
                 // dynamic classes that involves calculation like this
                 style={{ marginLeft: `${0.75 + 0.75 * nestingLevel}rem` }}
@@ -55,7 +56,7 @@ function Directory({ name, path, nestingLevel }: Props) {
                   )}
                 </div>
                 <p>{name}</p>
-              </div>
+              </HStack>
             </button>
           </Menu.Trigger>
 

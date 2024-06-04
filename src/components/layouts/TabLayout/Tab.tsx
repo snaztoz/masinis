@@ -1,3 +1,4 @@
+import HStack from '../HStack';
 import cn from 'classnames';
 import { ButtonHTMLAttributes } from 'react';
 import { MdClose } from 'react-icons/md';
@@ -10,13 +11,13 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 function Tab({ id, title, isActive, ...props }: Props) {
   const containerClassName = cn(
-    `border-b-2`,
+    `border-b-2 select-none`,
     isActive ? 'border-pink-500' : 'border-transparent'
   );
 
   const buttonClassName = cn(
-    `group py-1.5 px-3 flex gap-2 items-center text-sm border-r
-    border-neutral-500 dark:border-neutral-700`,
+    `group py-1.5 px-3 text-sm border-r border-neutral-500
+    dark:border-neutral-700`,
     isActive
       ? `text-neutral-600 dark:text-neutral-200`
       : `text-neutral-500 hover:text-neutral-600 dark:text-neutral-400
@@ -32,10 +33,12 @@ function Tab({ id, title, isActive, ...props }: Props) {
   return (
     <div className={containerClassName}>
       <button {...props} className={buttonClassName}>
-        {title}
-        <span className={closeButtonClassName}>
-          <MdClose />
-        </span>
+        <HStack className="items-center gap-2">
+          {title}
+          <span className={closeButtonClassName}>
+            <MdClose />
+          </span>
+        </HStack>
       </button>
     </div>
   );

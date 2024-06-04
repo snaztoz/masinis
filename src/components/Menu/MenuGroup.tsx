@@ -1,3 +1,4 @@
+import VStack from '../layouts/VStack';
 import { HTMLAttributes } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
@@ -10,13 +11,13 @@ interface Props extends HTMLAttributes<HTMLDivElement> {}
  */
 function MenuGroup({ children, ...props }: Props) {
   return (
-    <div
+    <VStack
       {...props}
-      className="px-1 py-1 flex flex-col border-b last:border-0
+      className="px-1 py-1 border-b last:border-0
         dark:border-neutral-700"
     >
       {children}
-    </div>
+    </VStack>
   );
 }
 
