@@ -1,5 +1,4 @@
-import MainView from './components/MainView';
-import PrimarySideBar from './components/PrimarySideBar';
+import MainView from './views/MainView';
 
 function App() {
   return (
@@ -9,10 +8,7 @@ function App() {
       // disable system's default context menu
       onContextMenu={(e) => e.preventDefault()}
     >
-      <main className="w-full h-full flex">
-        <MainView />
-        <PrimarySideBar />
-      </main>
+      <MainView />
     </div>
   );
 }

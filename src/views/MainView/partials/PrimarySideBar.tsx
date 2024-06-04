@@ -1,4 +1,4 @@
-import ProjectExplorerView from '../views/ProjectExplorerView';
+import ProjectExplorerView from '../../ProjectExplorerView';
 import cn from 'classnames';
 import { useState } from 'react';
 
