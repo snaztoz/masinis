@@ -1,3 +1,4 @@
+import Button from '../../../components/Button';
 import VStack from '../../../components/layouts/VStack';
 import { LuFolderTree } from 'react-icons/lu';
 import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
@@ -23,13 +24,9 @@ function NoSelectedProject() {
       </div>
 
       <div>
-        <button
-          className="px-3 py-2 rounded-lg bg-pink-600 hover:bg-pink-700
-            text-pink-200"
-          onClick={handleOpenDirectory}
-        >
+        <Button variant="secondary" onClick={handleOpenDirectory}>
           Open a directory
-        </button>
+        </Button>
       </div>
     </VStack>
   );
