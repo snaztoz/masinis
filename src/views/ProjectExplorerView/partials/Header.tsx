@@ -1,14 +1,17 @@
 import HStack from '../../../components/layouts/HStack';
 import Menu from '../../../components/Menu';
 import { MdMoreVert } from 'react-icons/md';
-import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
+import { useAppSelector } from '../../../hooks';
 import { useCloseDirectory } from '../hooks/useCloseDirectory';
+import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
 
 interface Props {
   title: string;
 }
 
 function Header({ title }: Props) {
+  const directoryPath = useAppSelector((s) => s.project.directoryPath);
+
   const { handleOpenDirectory } = useOpenDirectoryDialog();
   const { handleCloseDirectory } = useCloseDirectory();
 
@@ -48,6 +51,7 @@ function Header({ title }: Props) {
             <Menu.Group>
               <Menu.Item
                 isDangerous
+                disabled={!directoryPath}
                 onClickWithCloser={(_, close) => {
                   handleCloseDirectory();
                   close();
@@ -58,22 +62,7 @@ function Header({ title }: Props) {
             </Menu.Group>
           </Menu.Content>
         </Menu>
-        {/* <div ref={menuTogglerRef} className="relative flex items-center">
-          <button
-            className="text-neutral-400 hover:text-neutral-500
-              dark:hover:text-neutral-300"
-            onClick={handleMenu}
-          >
-            <MdMoreVert />
-          </button>
-        </div> */}
       </HStack>
-
-      {/* <HeaderMenu
-        position={menuPosition}
-        isShown={isMenuShown}
-        handleClose={closeMenu}
-      /> */}
     </>
   );
 }

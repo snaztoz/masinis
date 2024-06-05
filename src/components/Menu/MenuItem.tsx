@@ -16,6 +16,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 function MenuItem({
   className = '',
   isDangerous,
+  disabled,
   children,
   onClickWithCloser,
   ...props
@@ -23,8 +24,10 @@ function MenuItem({
   const { setIsOpened } = useContext(MenuContext);
 
   const mergedClassName = cn(
-    `w-full px-3 py-1 text-left rounded hover:bg-neutral-300
-    dark:hover:bg-neutral-700`,
+    `w-full px-3 py-1 text-left rounded`,
+    disabled
+      ? 'cursor-default brightness-75'
+      : 'hover:bg-neutral-300 dark:hover:bg-neutral-700',
     isDangerous ? 'text-red-400' : 'text-neutral-800 dark:text-neutral-300'
   );
 
@@ -32,7 +35,11 @@ function MenuItem({
     <button
       {...props}
       className={mergedClassName}
-      onClick={(e) => onClickWithCloser?.(e, () => setIsOpened(false))}
+      onClick={(e) => {
+        if (!disabled) {
+          onClickWithCloser?.(e, () => setIsOpened(false));
+        }
+      }}
     >
       {children}
     </button>
