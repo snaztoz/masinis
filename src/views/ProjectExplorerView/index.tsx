@@ -2,12 +2,12 @@ import Directory from './partials/Directory';
 import Header from './partials/Header';
 import NoSelectedProject from './partials/NoSelectedProject';
 import { MdOutlineFileOpen } from 'react-icons/md';
-import { useAppSelector } from '../../hooks';
+import { useProjectStore } from './hooks';
 
 const title = 'Project Explorer';
 
 function ProjectExplorer() {
-  const directoryPath = useAppSelector((s) => s.project.directoryPath);
+  const directoryPath = useProjectStore((state) => state.directoryPath);
   const directoryName = directoryPath?.split(/[\/\\]/).pop();
 
   return (

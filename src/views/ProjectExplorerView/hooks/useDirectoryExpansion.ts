@@ -2,7 +2,7 @@ import { FileEntry } from '@tauri-apps/api/fs';
 import { Fs } from '../../../libs/fs';
 import { useEffect, useState } from 'react';
 
-export function useDirectoryExpansion(path: string) {
+function useDirectoryExpansion(path: string) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [directoryChildren, setDirectoryChildren] = useState<FileEntry[]>([]);
 
@@ -24,3 +24,5 @@ export function useDirectoryExpansion(path: string) {
     toggleDirectory,
   };
 }
+
+export default useDirectoryExpansion;

@@ -1,17 +1,18 @@
+import useProjectStore from './useProjectStore';
 import { Fs } from '../../../libs/fs';
-import { setDirectoryPath } from '../../../slices/project';
-import { useAppDispatch } from '../../../hooks';
 
-export function useOpenDirectoryDialog(cleanup?: () => void) {
-  const dispatch = useAppDispatch();
+function useOpenDirectoryDialog(cleanup?: () => void) {
+  const setDirectoryPath = useProjectStore((state) => state.setDirectoryPath);
 
   const handleOpenDirectory = async () => {
     const path = await Fs.showOpenDirectoryDialog();
     if (path) {
-      dispatch(setDirectoryPath(path));
+      setDirectoryPath(path);
     }
     cleanup?.();
   };
 
   return { handleOpenDirectory };
 }
+
+export default useOpenDirectoryDialog;

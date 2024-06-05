@@ -7,7 +7,7 @@ import {
   MdOutlineKeyboardArrowRight,
 } from 'react-icons/md';
 import { TbFolder, TbFolderOpen } from 'react-icons/tb';
-import { useDirectoryExpansion } from '../hooks/useDirectoryExpansion';
+import { useDirectoryExpansion } from '../hooks';
 
 interface Props {
   name: string;

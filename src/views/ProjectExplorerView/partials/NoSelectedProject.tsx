@@ -1,7 +1,7 @@
 import Button from '../../../components/Button';
 import VStack from '../../../components/layouts/VStack';
 import { LuFolderTree } from 'react-icons/lu';
-import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
+import { useOpenDirectoryDialog } from '../hooks';
 
 function NoSelectedProject() {
   const { handleOpenDirectory } = useOpenDirectoryDialog();

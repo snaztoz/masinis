@@ -1,16 +1,18 @@
 import HStack from '../../../components/layouts/HStack';
 import Menu from '../../../components/Menu';
 import { MdMoreVert } from 'react-icons/md';
-import { useAppSelector } from '../../../hooks';
-import { useCloseDirectory } from '../hooks/useCloseDirectory';
-import { useOpenDirectoryDialog } from '../hooks/useOpenDirectoryDialog';
+import {
+  useCloseDirectory,
+  useOpenDirectoryDialog,
+  useProjectStore,
+} from '../hooks';
 
 interface Props {
   title: string;
 }
 
 function Header({ title }: Props) {
-  const directoryPath = useAppSelector((s) => s.project.directoryPath);
+  const directoryPath = useProjectStore((state) => state.directoryPath);
 
   const { handleOpenDirectory } = useOpenDirectoryDialog();
   const { handleCloseDirectory } = useCloseDirectory();
