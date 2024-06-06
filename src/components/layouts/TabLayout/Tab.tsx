@@ -7,9 +7,10 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   id: string;
   title: string;
   isActive: boolean;
+  closeHandler: () => void;
 }
 
-function Tab({ id, title, isActive, ...props }: Props) {
+function Tab({ id, title, isActive, closeHandler, ...props }: Props) {
   const containerClassName = cn(
     `border-b-2 select-none`,
     isActive ? 'border-pink-500' : 'border-transparent'
@@ -35,7 +36,13 @@ function Tab({ id, title, isActive, ...props }: Props) {
       <button {...props} className={buttonClassName}>
         <HStack className="items-center gap-2">
           {title}
-          <span className={closeButtonClassName}>
+          <span
+            className={closeButtonClassName}
+            onClick={(e) => {
+              e.stopPropagation();
+              closeHandler();
+            }}
+          >
             <MdClose />
           </span>
         </HStack>
