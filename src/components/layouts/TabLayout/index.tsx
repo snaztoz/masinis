@@ -23,7 +23,7 @@ function TabLayout({ tabs, onTabClick, onTabCloseClick }: Props) {
 
   return (
     <VStack className="grow h-full min-w-0">
-      <HStack className="w-full overflow-x-auto">
+      <HStack className="shrink-0 w-full overflow-x-auto">
         {tabs.map((tab) => (
           <Tab
             key={tab.id}
