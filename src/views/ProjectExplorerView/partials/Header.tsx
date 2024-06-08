@@ -1,5 +1,6 @@
 import HStack from '../../../components/layouts/HStack';
 import Menu from '../../../components/Menu';
+import useOpenedFileStore from '../../hooks/useOpenedFileStore';
 import { MdMoreVert } from 'react-icons/md';
 import {
   useCloseDirectory,
@@ -13,6 +14,9 @@ interface Props {
 
 function Header({ title }: Props) {
   const directoryPath = useProjectStore((state) => state.directoryPath);
+  const closeAllOpenedFiles = useOpenedFileStore(
+    (store) => store.closeAllFiles
+  );
 
   const { handleOpenDirectory } = useOpenDirectoryDialog();
   const { handleCloseDirectory } = useCloseDirectory();
@@ -55,6 +59,9 @@ function Header({ title }: Props) {
                 isDangerous
                 disabled={!directoryPath}
                 onClickWithCloser={(_, close) => {
+                  // close all opened files first, and then close
+                  // the directory
+                  closeAllOpenedFiles();
                   handleCloseDirectory();
                   close();
                 }}

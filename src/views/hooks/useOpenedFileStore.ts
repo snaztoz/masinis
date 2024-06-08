@@ -15,6 +15,7 @@ interface OpenedFileState {
   files: OpenedFile[];
   openFile: (file: FileEntry) => Promise<void>;
   closeFile: (path: string) => void;
+  closeAllFiles: () => void;
   touchFile: (path: string) => void;
 }
 
@@ -50,6 +51,15 @@ const useOpenedFileStore = create<OpenedFileState>()(
       set((state) => {
         const fileIndex = state.files.findIndex((file) => file.path === path);
         state.files.splice(fileIndex, 1);
+      });
+    },
+
+    /**
+     * Remove all files from the `files` property.
+     */
+    closeAllFiles: () => {
+      set((state) => {
+        state.files = [];
       });
     },
 
