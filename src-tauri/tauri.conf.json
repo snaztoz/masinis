@@ -22,7 +22,8 @@
         "save": true
       },
       "fs": {
-        "readDir": true
+        "readDir": true,
+        "readFile": true
       }
     },
     "windows": [

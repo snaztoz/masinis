@@ -3,25 +3,36 @@ import Menu from '../../../components/Menu';
 import cn from 'classnames';
 import { Icons } from '../../../libs/icons';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import { MouseEvent } from 'react';
+import useOpenedFileStore from '../../hooks/useOpenedFileStore';
+import { FileEntry } from '@tauri-apps/api/fs';
 
 interface Props {
-  name: string;
+  file: FileEntry;
   nestingLevel: number;
 }
 
-function File({ name, nestingLevel }: Props) {
-  const [Icon, iconColorClass] = Icons.inferFileIcon(name);
+function File({ file, nestingLevel }: Props) {
+  const openFile = useOpenedFileStore((state) => state.openFile);
+
+  const [Icon, iconColorClass] = Icons.inferFileIcon(file.name!);
   const buttonClassName = cn(
     `w-full py-0.5 flex dark:text-neutral-300 dark:focus:bg-neutral-800
     hover:bg-neutral-300 dark:hover:bg-neutral-800 border border-dashed
     border-transparent`
   );
 
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
+    if (e.detail === 2) {
+      openFile(file);
+    }
+  }
+
   return (
     <>
       <Menu asContextMenu>
         <Menu.Trigger>
-          <button className={buttonClassName}>
+          <button className={buttonClassName} onClick={handleClick}>
             <HStack
               className="grow items-center gap-1"
               // We are using manual CSS because Tailwind does not support
@@ -39,7 +50,7 @@ function File({ name, nestingLevel }: Props) {
               >
                 <Icon />
               </div>
-              <p>{name}</p>
+              <p>{file.name!}</p>
             </HStack>
           </button>
         </Menu.Trigger>

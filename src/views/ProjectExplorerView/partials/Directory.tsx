@@ -88,11 +88,7 @@ function Directory({ name, path, nestingLevel }: Props) {
                 nestingLevel={nestingLevel + 1}
               />
             ) : (
-              <File
-                key={f.name!}
-                name={f.name!}
-                nestingLevel={nestingLevel + 1}
-              />
+              <File key={f.name!} file={f} nestingLevel={nestingLevel + 1} />
             )
           )}
       </div>
