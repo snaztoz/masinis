@@ -3,7 +3,7 @@ import Tab from './Tab';
 import TabDefaultView from './TabDefaultView';
 import TabItem from './TabItem';
 import VStack from '../VStack';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 interface Props {
   tabs: TabItem[];
@@ -11,6 +11,15 @@ interface Props {
 
 function TabLayout({ tabs: initialTabs }: Props) {
   const [tabs, setTabs] = useState<TabItem[]>(initialTabs);
+
+  const activeTab = tabs.find((tab) => tab.isActive);
+  const view = activeTab ? (
+    // use `key` in order to make the view is properly
+    // re-created on tab activation
+    <Fragment key={activeTab.id}>{activeTab.view()}</Fragment>
+  ) : (
+    <TabDefaultView />
+  );
 
   function handleTabActivation(id: string) {
     setTabs((prev) =>
@@ -54,8 +63,8 @@ function TabLayout({ tabs: initialTabs }: Props) {
   }
 
   return (
-    <VStack className="grow h-full">
-      <HStack className="w-full">
+    <VStack className="grow h-full min-w-0">
+      <HStack className="w-full overflow-x-auto">
         {tabs.map((tab) => (
           <Tab
             key={tab.id}
@@ -68,9 +77,7 @@ function TabLayout({ tabs: initialTabs }: Props) {
         ))}
       </HStack>
 
-      <div className="grow w-full bg-neutral-800">
-        {tabs.find((tab) => tab.isActive)?.view || <TabDefaultView />}
-      </div>
+      <div className="grow w-full bg-neutral-800 overflow-y-auto">{view}</div>
     </VStack>
   );
 }

@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cm-editor {
+    @apply h-full;
+}
+
+.cm-gutters {
+    @apply bg-neutral-900 text-neutral-500 border-neutral-600 px-2 !important;
+}
+
+.cm-gutterElement {
+    @apply text-base min-w-10 !important;
+}
+
+.cm-content {
+    @apply dark:text-neutral-200 dark:caret-white !important;
+}
+
+.cm-line {
+    @apply first:mt-0.5 font-mono pl-2 !important;
+}
+
+.cm-activeLine {
+    @apply dark:bg-neutral-700 !important;
+}
+
+.cm-activeLineGutter {
+    @apply bg-transparent dark:text-neutral-300 !important;
+}

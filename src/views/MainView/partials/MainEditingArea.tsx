@@ -1,3 +1,4 @@
+import CodeEditorView from './CodeEditorView';
 import TabLayout from '../../../components/layouts/TabLayout';
 
 function MainEditingArea() {
@@ -7,19 +8,25 @@ function MainEditingArea() {
         {
           id: 'first',
           title: 'The first tab',
-          view: <p>This is the first tab!</p>,
+          view: () => (
+            <CodeEditorView initialDoc="Initial code for the first tab" />
+          ),
           isActive: true,
         },
         {
           id: 'second',
           title: 'The second tab',
-          view: <p>This is the second tab!</p>,
+          view: () => (
+            <CodeEditorView initialDoc="Initial code for the second tab" />
+          ),
           isActive: false,
         },
         {
           id: 'third',
           title: 'The third tab',
-          view: <p>This is the third tab!</p>,
+          view: () => (
+            <CodeEditorView initialDoc="Initial code for the third tab" />
+          ),
           isActive: false,
         },
       ]}

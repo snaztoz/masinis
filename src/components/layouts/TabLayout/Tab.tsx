@@ -35,7 +35,7 @@ function Tab({ id, title, isActive, closeHandler, ...props }: Props) {
     <div className={containerClassName}>
       <button {...props} className={buttonClassName}>
         <HStack className="items-center gap-2">
-          {title}
+          <p className="whitespace-nowrap">{title}</p>
           <span
             className={closeButtonClassName}
             onClick={(e) => {
