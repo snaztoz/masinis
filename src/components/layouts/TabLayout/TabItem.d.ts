@@ -1,3 +1,4 @@
+import { IconType } from 'react-icons/lib';
 import { ReactNode } from 'react';
 
 export default interface TabItem {
@@ -5,4 +6,8 @@ export default interface TabItem {
   title: string;
   isActive: boolean;
   view: () => ReactNode;
+  icon?: {
+    el: IconType;
+    className: string;
+  };
 }

@@ -30,6 +30,7 @@ function TabLayout({ tabs, onTabClick, onTabCloseClick }: Props) {
             id={tab.id}
             title={tab.title}
             isActive={tab.isActive}
+            icon={tab.icon}
             onClick={() => onTabClick(tab.id)}
             closeHandler={() => onTabCloseClick(tab.id)}
           />

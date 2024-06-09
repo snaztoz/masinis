@@ -1,11 +1,11 @@
 import HStack from '../../../components/layouts/HStack';
 import Menu from '../../../components/Menu';
 import cn from 'classnames';
+import useOpenedFileStore from '../../hooks/useOpenedFileStore';
+import { FileEntry } from '@tauri-apps/api/fs';
 import { Icons } from '../../../libs/icons';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { MouseEvent } from 'react';
-import useOpenedFileStore from '../../hooks/useOpenedFileStore';
-import { FileEntry } from '@tauri-apps/api/fs';
 
 interface Props {
   file: FileEntry;

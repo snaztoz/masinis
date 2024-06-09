@@ -2,6 +2,7 @@ import CodeEditorView from './CodeEditorView';
 import TabItem from '../../../components/layouts/TabLayout/TabItem';
 import TabLayout from '../../../components/layouts/TabLayout';
 import useOpenedFileStore from '../../hooks/useOpenedFileStore';
+import { Icons } from '../../../libs/icons';
 
 function MainEditingArea() {
   const openedFiles = useOpenedFileStore((state) => state.files);
@@ -15,13 +16,20 @@ function MainEditingArea() {
         return tab.touchedAt > mostRecentTab.touchedAt ? tab : mostRecentTab;
       });
 
-  const tabs: TabItem[] = openedFiles.map((file) => ({
-    id: file.path,
-    title: file.name,
-    // if it's undefined, then the openedFiles must be empty anyway!
-    isActive: mostRecentTouchedTab!.path === file.path,
-    view: () => <CodeEditorView initialDoc={file.content!} />,
-  }));
+  const tabs: TabItem[] = openedFiles.map((file) => {
+    const [icon, iconClassName] = Icons.inferFileIcon(file.name);
+    return {
+      id: file.path,
+      title: file.name,
+      // if it's undefined, then the openedFiles must be empty anyway!
+      isActive: mostRecentTouchedTab!.path === file.path,
+      icon: {
+        el: icon,
+        className: iconClassName,
+      },
+      view: () => <CodeEditorView initialDoc={file.content!} />,
+    };
+  });
 
   function handleTabCloseClick(path: string) {
     const targetTabIndex = tabs.findIndex((tab) => tab.id === path);
