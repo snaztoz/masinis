@@ -20,7 +20,7 @@ interface OpenedFileState {
 }
 
 const useOpenedFileStore = create<OpenedFileState>()(
-  immer((set) => ({
+  immer((set, get) => ({
     files: [],
 
     /**
@@ -30,6 +30,15 @@ const useOpenedFileStore = create<OpenedFileState>()(
      * @param file File entry instance.
      */
     openFile: async (file: FileEntry) => {
+      const fileIndex = get().files.findIndex((f) => f.path === file.path);
+      if (fileIndex >= 0) {
+        // file is already opened, touch the file instead
+        set((state) => {
+          state.files[fileIndex].touchedAt = Date.now();
+        });
+        return;
+      }
+
       const openedFile: OpenedFile = {
         name: file.name!,
         path: file.path,
